@@ -5,46 +5,11 @@ import {
   Link
 } from 'react-router-dom';
 import Home from './Home';
-
-class Topics extends React.Component {
-  render(){
-    return (
-      <div>Topics</div>
-    )
-  }
-}
-
-class Tops extends React.Component {
-  render(){
-    return (
-      <div>Tops</div>
-    )
-  }
-}
-
-class Jobs extends React.Component {
-  render(){
-    return (
-      <div>Jobs</div>
-    )
-  }
-}
-
-class Wiki extends React.Component {
-  render(){
-    return (
-      <div>Wiki</div>
-    )
-  }
-}
-
-class Sites extends React.Component {
-  render(){
-    return (
-      <div>Sites</div>
-    )
-  }
-}
+import Jobs from './Jobs';
+import Sites from './Sites';
+import Topics from './Topics';
+import Tops from './Tops';
+import Wiki from './Wiki';
 
 class Header extends React.Component {
   render(){
