@@ -25,6 +25,7 @@
   "dependencies": {
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
+    "react-dom": "^15.6.1",
     "react-logger": "^1.1.0",
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.2",
