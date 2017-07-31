@@ -61,8 +61,8 @@ module.exports = {
     ],
   },
   resolve: {
-    modules: path.resolve(__dirname, 'node_modules'),
-    mainField: ['jsnext:main', 'browser', 'main']
+    modules: [path.resolve(__dirname, 'node_modules')],
+    mainFields: ['jsnext:main', 'browser', 'main']
   },
   devtool: 'source-map',
   plugins: [
@@ -80,7 +80,7 @@ module.exports = {
     port: 9000,
     compress: true,
     quiet: true,
-    historyApiFallBack: true,
+    historyApiFallback: true,
     overlay: {
       warning: true,
       errors: true
