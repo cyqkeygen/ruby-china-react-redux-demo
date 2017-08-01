@@ -5,6 +5,7 @@ import {
   Route
 } from 'react-router-dom';
 import routes from './routes';
+import '../../src/styles/app.scss';
 
 class App extends React.Component {
   render(){
@@ -15,8 +16,8 @@ class App extends React.Component {
 
     return (
       <Router>
-        <div>
-          <Header routes={routes}/>
+        <div className="box">
+          <Header routes={routes} />
           {routeComponents}
         </div>
       </Router>
