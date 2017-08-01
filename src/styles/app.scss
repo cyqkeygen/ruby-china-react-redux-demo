@@ -1,0 +1,21 @@
+//@import "~normalize/sass";
+//@import "~normalize/normalize.css";
+
+@mixin box-style {
+  margin: 6px;
+  border: 1px solid #e6e6e6;
+  padding: 6px;
+}
+
+.box {
+  @include box-style;
+}
+
+li {
+  list-style: none;
+}
+
+.header-menu-item {
+  @include box-style;
+  display: inline-block;
+}

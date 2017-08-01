@@ -32,7 +32,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        exclude: /node_module/,
+        exclude: path.resolve(__dirname, 'src/styles'),
         loaders: [
           'style-loader',
           {
@@ -47,6 +47,11 @@ module.exports = {
           'postcss-loader',
           'sass-loader'
         ]
+      },
+      {
+        test: /\.scss/,
+        include: path.resolve(__dirname, 'src/styles'),
+        loader: 'style-loader!css-loader!sass-loader?sourceMap=true'
       },
       {
         test: /.(gif|png|jpe?g|eot|woff|ttf|svg|pdf)/,
