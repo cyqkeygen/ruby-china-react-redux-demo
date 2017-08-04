@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './Header';
+import Footer from './Footer';
 import {
   BrowserRouter as Router,
   Route
@@ -19,6 +20,7 @@ class App extends React.Component {
         <div className="box">
           <Header routes={routes} />
           {routeComponents}
+          <Footer />
         </div>
       </Router>
     )

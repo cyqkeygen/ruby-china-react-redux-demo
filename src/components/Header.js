@@ -7,12 +7,17 @@ class Header extends React.Component {
     routes: PropTypes.array.isRequired
   }
 
+  renderNavigator() {}
+
+  renderUserArea() {}
+
   render(){
     const { routes } = this.props;
     const links = routes.map(({path, name}, key) => 
-      <li key={key} className="header-menu-item">
+      <li key={key} className="menu-item">
         <Link to={path}>{name}</Link>
       </li>
+
     );
     
     return (
