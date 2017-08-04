@@ -10,7 +10,6 @@ class TopicItem extends React.Component {
 
   render(){
     const { topic } = this.props;
-    console.log(styles)
     return (
       <li className="box">
         <img alt={topic.user.name} src={topic.user.avatar_url} height='50px' width='50px' />
