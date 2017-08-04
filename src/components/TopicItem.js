@@ -18,7 +18,7 @@ class TopicItem extends React.Component {
         <div className={styles.infos}>
           <div className={styles.title}>
             <span>{topic.node_name}</span>
-            <span>{topic.title}</span>
+            <span className={styles['title-text']}>{topic.title}</span>
           </div>
           <div className={styles.info}>
             <span className={styles['info-item']}>{topic.last_reply_user_login}</span>

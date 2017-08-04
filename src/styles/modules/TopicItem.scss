@@ -30,6 +30,10 @@
   overflow: hidden;
 }
 
+.title-text {
+  margin-left: 8px;
+}
+
 .replies-count {
   @include box;
   text-align: right;
