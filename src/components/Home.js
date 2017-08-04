@@ -49,7 +49,6 @@ class Home extends React.Component {
 
   renderPopularTopics() {
     const { topics } = this.props;
-    console.log(topics)
     return (
       <div className="box">
         <p>社区精华贴</p>
