@@ -9,3 +9,25 @@
   `yarn add webpack-dashboard html-webpack-plugin extract-text-webpack-plugin webpack-dev-server  -D --no-progress`
 ## 4. Install react dependences
   `yarn add react react-redux redux react-router-dom react-logger react-thunk prop-types --no-progress`
+
+``
+state = {
+  userLogin: false,
+  currentUser: {},
+  topicByType: {
+    isFetching: false,
+    didInvalidate: false,
+    topics: [],
+    offset: 0,
+    limit: 20
+  },
+  currentTopic: {},
+  currentTopicReplies: [],
+  statistics: {
+    members: 32461,
+    topicCount: 33652,
+    replyCount: 327483,
+  },
+  nodes: [],
+}
+``
