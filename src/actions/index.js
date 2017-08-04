@@ -37,6 +37,15 @@ export function fetchTopics(topicType) {
   }
 }
 
+export function fetchTopicsAsync(topicType) {
+  return async function(dispatch) {
+    dispatch(requestTopics(topicType));
+    const response = await fetch(requestTopicUrl + `?type=${topicType}`);
+    console.log(response);
+    dispatch(receiveTopics(topicType, response.json.topics));
+  }
+}
+
 export function shouldFetchTopics(state, topicType){
   if (!topics) {
     return true

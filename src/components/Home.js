@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import Topic from './Topic';
-import { fetchTopics } from '../actions';
+import TopicItem from './TopicItem';
+import { fetchTopics, fetchTopicsAsync } from '../actions';
 
 class Home extends React.Component {
 
@@ -22,6 +22,7 @@ class Home extends React.Component {
   loadPopularTopics() {
     const { dispatch } = this.props;
     dispatch(fetchTopics('excellent'));
+    //dispatch(fetchTopicsAsync('excellent'));
   }
 
   loadNodes() {
@@ -52,7 +53,7 @@ class Home extends React.Component {
     return (
       <div className="box">
         <p>社区精华贴</p>
-        {topics.map( topic => <Topic key={topic.id} topic={topic} />)}
+        {topics.map( topic => <TopicItem key={topic.id} topic={topic} />)}
       </div>
     );
   }

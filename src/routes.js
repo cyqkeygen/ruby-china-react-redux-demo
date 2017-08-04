@@ -1,9 +1,9 @@
-import Home from '../containers/Home';
-import Topics from './Topics';
-import Headlines from './Headlines';
-import Jobs from './Jobs';
-import Sites from './Sites';
-import Wiki from './Wiki';
+import Home from './containers/Home';
+import Topics from './components/Topics';
+import Headlines from './components/Headlines';
+import Jobs from './components/Jobs';
+import Sites from './components/Sites';
+import Wiki from './components/Wiki';
 
 const routes = [
   { path: '/', name: '首页', component: Home},

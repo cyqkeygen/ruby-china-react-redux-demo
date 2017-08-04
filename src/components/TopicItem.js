@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class Topic extends React.Component {
+class TopicItem extends React.Component {
 
   static propTypes = {
     topic: PropTypes.object.isRequired
@@ -12,7 +12,7 @@ class Topic extends React.Component {
     return (
       <li className="box">
         <img alt={topic.user.name} src={topic.user.avatar_url} height='50px' width='50px' />
-        <span>{topic.node_name}</span>
+        <div className='topic-node-type'>{topic.node_name}</div>
         <span>{topic.title}</span>
         <span>{topic.last_reply_user_login}</span>
         <span>{topic.replied_at}</span>
@@ -22,4 +22,4 @@ class Topic extends React.Component {
   }
 }
 
-export default Topic;
+export default TopicItem;

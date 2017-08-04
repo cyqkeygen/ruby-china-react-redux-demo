@@ -18,3 +18,8 @@ li {
   @include box-style;
   display: inline-block;
 }
+
+.topic-node-type {
+  @include box-style;
+  display: inline-block;
+}
