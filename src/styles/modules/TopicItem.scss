@@ -1,0 +1,6 @@
+@import 'shareStyles.scss';
+
+.node-box {
+  @include box-style;
+  display: inline-block;
+}

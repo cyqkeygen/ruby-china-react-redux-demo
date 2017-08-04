@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from '../styles/modules/TopicItem.scss';
 
 class TopicItem extends React.Component {
 
@@ -9,10 +10,11 @@ class TopicItem extends React.Component {
 
   render(){
     const { topic } = this.props;
+    console.log(styles)
     return (
       <li className="box">
         <img alt={topic.user.name} src={topic.user.avatar_url} height='50px' width='50px' />
-        <div className='topic-node-type'>{topic.node_name}</div>
+        <div className={styles['node-box']}>{topic.node_name}</div>
         <span>{topic.title}</span>
         <span>{topic.last_reply_user_login}</span>
         <span>{topic.replied_at}</span>
