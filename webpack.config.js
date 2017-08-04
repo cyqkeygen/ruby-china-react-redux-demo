@@ -32,7 +32,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        exclude: path.resolve(__dirname, 'src/styles'),
+        exclude: path.resolve(__dirname, 'src/styles/common'),
         loaders: [
           'style-loader',
           {
@@ -50,7 +50,7 @@ module.exports = {
       },
       {
         test: /\.scss/,
-        include: path.resolve(__dirname, 'src/styles'),
+        include: path.resolve(__dirname, 'src/styles/common'),
         loader: 'style-loader!css-loader!sass-loader?sourceMap=true'
       },
       {
