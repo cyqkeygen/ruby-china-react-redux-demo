@@ -1,4 +1,4 @@
-import Home from './Home';
+import Home from '../containers/Home';
 import Topics from './Topics';
 import Headlines from './Headlines';
 import Jobs from './Jobs';

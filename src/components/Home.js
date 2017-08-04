@@ -1,23 +1,38 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Topic from './Topic';
-import { topics } from './topics.json';
+import { fetchTopics } from '../actions';
 
 class Home extends React.Component {
 
-  constructor() {
-    super();
-    this.state = {
-      popularTopics: []
-    }
+  static propTypes = {
+    topics: PropTypes.array.isRequired,
+    isFetching: PropTypes.bool.isRequired,
+    lastUpdated: PropTypes.number,
+    dispatch: PropTypes.func.isRequired
   }
-  componentWillMount() {
+
+  componentDidMount() {
     this.loadPopularTopics();
+    this.loadNodes();
+    this.loadHotCities();
   }
 
   loadPopularTopics() {
+    const { dispatch } = this.props;
+    dispatch(fetchTopics('excellent'));
+  }
+
+  loadNodes() {
     this.setState({
-      popularTopics: topics
+      nodes: []
+    });
+  }
+
+  loadHotCities() {
+    this.setState({
+      cities: []
     });
   }
 
@@ -33,18 +48,37 @@ class Home extends React.Component {
   }
 
   renderPopularTopics() {
-    const { popularTopics } = this.state;
+    const { topics } = this.props;
+    console.log(topics)
     return (
       <div className="box">
         <p>社区精华贴</p>
-        {popularTopics.map( topic => <Topic key={topic.id} topic={topic} />)}
+        {topics.map( topic => <Topic key={topic.id} topic={topic} />)}
       </div>
     );
+  }
+
+  renderNodes() {
+    return (
+      <div className="box">
+        <p>讨论节点分类导航</p>
+      </div>
+    )
+  }
+
+  renderHotCities() {
+    return (
+      <div className="box">
+        <p>热门城市</p>
+      </div>
+    )
   }
 
   render(){
     const links = this.renderLinks();
     const popularTopics = this.renderPopularTopics();
+    const nodesNavigator = this.renderNodes();
+    const hotCities = this.renderHotCities();
     return (
       <div>
         <div className="box">
@@ -53,6 +87,8 @@ class Home extends React.Component {
         </div>
         {links}
         {popularTopics}
+        {nodesNavigator}
+        {hotCities}
       </div>
     )
   }
