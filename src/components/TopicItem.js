@@ -17,8 +17,8 @@ class TopicItem extends React.Component {
         </div>
         <div className={styles.infos}>
           <div className={styles.title}>
-            <div className={styles.node}>{topic.node_name}</div>
-            <div className={styles.name}>{topic.title}</div>
+            <span>{topic.node_name}</span>
+            <span>{topic.title}</span>
           </div>
           <div className={styles.info}>
             <span className={styles['info-item']}>{topic.last_reply_user_login}</span>
@@ -26,7 +26,7 @@ class TopicItem extends React.Component {
           </div>
         </div>
         <div className={styles['replies-count']}>
-          <span className={styles['info-item']}>{topic.replies_count}</span>
+          <span className={styles['count-num']}>{topic.replies_count}</span>
         </div>
       </div>
     )

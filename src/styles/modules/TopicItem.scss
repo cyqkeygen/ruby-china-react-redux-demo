@@ -9,20 +9,37 @@
 }
 
 .image {
-  height: 50px;
-  width: 50px;
+  height: 72px;
+  width: 72px;
   position: relative;
   display: inline-block;
 }
 
 .infos {
   @include box;
+  padding: 0;
   display: table-cell;
+  vertical-align: top;
+  width: 100000px;
+  overflow: hidden;
+}
+
+.title {
+  line-height: 30px;
+  height: 30px;
+  overflow: hidden;
 }
 
 .replies-count {
   @include box;
+  text-align: right;
   display: table-cell;
+  vertical-align: top;
+}
+
+.count-num {
+  display: inline-block;
+  width: 40px;
 }
 
 .node {
