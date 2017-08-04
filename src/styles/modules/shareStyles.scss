@@ -1,5 +1,10 @@
-@mixin box-style {
+@mixin box {
   margin: 6px;
   border: 1px solid #e6e6e6;
   padding: 6px;
+}
+
+@mixin inline-box {
+  @include box;
+  display: inline-block;
 }

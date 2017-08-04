@@ -1,6 +1,34 @@
 @import 'shareStyles.scss';
 
-.node-box {
-  @include box-style;
+.box {
+  @include box;
+}
+
+.image-out {
+  display: table-cell;
+}
+
+.image {
+  height: 50px;
+  width: 50px;
+  position: relative;
   display: inline-block;
+}
+
+.infos {
+  @include box;
+  display: table-cell;
+}
+
+.replies-count {
+  @include box;
+  display: table-cell;
+}
+
+.node {
+  @include inline-box;
+}
+
+.name {
+  @include inline-box;
 }

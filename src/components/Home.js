@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import TopicItem from './TopicItem';
 import { fetchTopics, fetchTopicsAsync } from '../actions';
+import styles from '../styles/modules/Home.scss';
 
 class Home extends React.Component {
 
@@ -50,10 +51,16 @@ class Home extends React.Component {
 
   renderPopularTopics() {
     const { topics } = this.props;
+    const length = topics.length;
     return (
       <div className="box">
         <p>社区精华贴</p>
-        {topics.map( topic => <TopicItem key={topic.id} topic={topic} />)}
+        <div className={styles['left-col']}>
+          {topics.slice(0, length / 2).map( topic => <TopicItem key={topic.id} topic={topic} />)}
+        </div>
+        <div className={styles['right-col']}>
+          {topics.slice(length / 2).map( topic => <TopicItem key={topic.id} topic={topic} />)}
+        </div>
       </div>
     );
   }
