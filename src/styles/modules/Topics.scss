@@ -1,0 +1,16 @@
+@import 'shareStyles.scss';
+
+@mixin table-box {
+  @include box;
+  display: table-cell;
+}
+
+.left-col {
+  @include table-box;
+  width: 75%;
+}
+
+.right-col {
+  @include table-box;
+  width: 25%;
+}
