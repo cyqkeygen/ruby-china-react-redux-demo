@@ -54,14 +54,14 @@ module.exports = {
         loader: 'style-loader!css-loader!sass-loader?sourceMap=true'
       },
       {
-        test: /.(gif|png|jpe?g|eot|woff|ttf|svg|pdf)/,
+        test: /.(gif|jpe?g|eot|woff|ttf|svg|pdf)/,
         exclude: /^node_modules$/,
         loader: 'file-loader?name=[name].[ext]',
       },
       {
         test: /\.(png|jpg)$/,
         exclude: /^node_modules$/,
-        loader: 'url?limit=20000&name=[name].[ext]'
+        loader: 'url-loader?limit=20000&name=[name].[ext]'
       }
     ],
   },
