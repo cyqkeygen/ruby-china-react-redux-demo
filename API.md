@@ -6,3 +6,4 @@ https://ruby-china.org/api/v3/topics?type=popular
 https://ruby-china.org/api/v3/topics?type=no_reply
 https://ruby-china.org/api/v3/topics?type=last
 https://ruby-china.org/api/v3/users
+https://ruby-china.org/api/v3/nodes
