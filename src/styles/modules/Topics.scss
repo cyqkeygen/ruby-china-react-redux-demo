@@ -14,3 +14,16 @@
   @include table-box;
   width: 25%;
 }
+
+.right-col-box {
+  @include box;
+}
+
+.friend {
+  padding: 0;
+}
+
+.image {
+  width: 100%;
+  border-top: 1px solid #e6e6e6;
+}

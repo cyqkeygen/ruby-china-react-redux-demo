@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import TopicItem from './TopicItem';
-import { fetchTopics, fetchTopicsAsync } from '../actions';
+import { fetchTopics, selectPage } from '../actions';
 import styles from '../styles/modules/Home.scss';
 
 class Home extends React.Component {
@@ -11,19 +11,21 @@ class Home extends React.Component {
     topics: PropTypes.array.isRequired,
     isFetching: PropTypes.bool.isRequired,
     lastUpdated: PropTypes.number,
-    dispatch: PropTypes.func.isRequired
+    selectPage: PropTypes.func.isRequired,
+    fetchTopics: PropTypes.func.isRequired
   }
 
   componentDidMount() {
-    this.loadPopularTopics();
+    const { selectPage, fetchTopics } = this.props;
+    selectPage('home');
+    fetchTopics('home', {type: 'excellent'}, {limit: 20, offset: 0});
     this.loadNodes();
     this.loadHotCities();
   }
 
   loadPopularTopics() {
     const { dispatch } = this.props;
-    dispatch(fetchTopics('excellent'));
-    //dispatch(fetchTopicsAsync('excellent'));
+    dispatch(selectPage('home'));
   }
 
   loadNodes() {
@@ -49,7 +51,7 @@ class Home extends React.Component {
     )
   }
 
-  renderPopularTopics() {
+  renderExcellentTopics() {
     const { topics } = this.props;
     const length = topics.length;
     return (
@@ -83,7 +85,7 @@ class Home extends React.Component {
 
   render(){
     const links = this.renderLinks();
-    const popularTopics = this.renderPopularTopics();
+    const excellentTopics = this.renderExcellentTopics();
     const nodesNavigator = this.renderNodes();
     const hotCities = this.renderHotCities();
     return (
@@ -93,7 +95,7 @@ class Home extends React.Component {
           <p>gem source -a https://gems.ruby-china.org</p>
         </div>
         {links}
-        {popularTopics}
+        {excellentTopics}
         {nodesNavigator}
         {hotCities}
       </div>

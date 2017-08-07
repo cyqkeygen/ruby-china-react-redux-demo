@@ -1,25 +1,40 @@
 import { connect } from 'react-redux';
+import {
+  selectPage,
+  fetchTopics
+} from '../actions';
 import Home from '../components/Home';
 
 function mapStateToProps(state) {
-  const { topicType, excellentTopics } = state;
+  const { types } = state;
+  const { excellent } = types;
   const {
     isFetching,
-    lastUpdated,
+    receiveAt,
     topics
-  } = excellentTopics.topics
-    ? excellentTopics
+  } = excellent
+    ? excellent
     : {
       isFetching: true,
       topics: []
     };
 
   return {
-    topicType,
     isFetching,
     topics,
-    lastUpdated,
+    receiveAt,
   }
 }
 
-export default connect(mapStateToProps)(Home);
+function mapDispatchToProps(dispatch) {
+  return {
+    selectPage: (page) => {
+      dispatch(selectPage(page));
+    },
+    fetchTopics: (page, topicsInfos, options) => {
+      dispatch(fetchTopics(page, topicsInfos, options));
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
