@@ -1,5 +1,5 @@
 import Home from './containers/Home';
-import Topics from './components/Topics';
+import Topics from './containers/Topics';
 import Headlines from './components/Headlines';
 import Jobs from './components/Jobs';
 import Sites from './components/Sites';

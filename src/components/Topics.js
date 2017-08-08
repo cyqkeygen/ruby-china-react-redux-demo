@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import TopicItem from './TopicItem';
 import styles from '../styles/modules/Topics.scss';
 import rubyConfImage from '../images/ruby_conf.png';
 import cnodeImage from '../images/cnode.png';
@@ -9,10 +11,35 @@ import testerHomeImage from '../images/tester_home.png';
 
 class Topics extends React.Component {
 
+  static propTypes = {
+    topics: PropTypes.array.isRequired,
+    fetchTopics: PropTypes.func.isRequired,
+    uiSwitch: PropTypes.func.isRequired
+  }
+
+  componentWillMount() {
+    const { uiSwitch } = this.props;
+    uiSwitch({
+      page: 'topics',
+      type: 'default',
+      nodeId: -1
+    });
+  }
+
+  componentDidMount() {
+    const { fetchTopics } = this.props;
+    fetchTopics({
+      type: 'default',
+      limit: 25,
+      offset: 0
+    });
+  }
+
   renderTopics() {
+    const { topics } = this.props;
     return (
       <div className={styles['left-col']}>
-        col-left
+        {topics.map( topic => <TopicItem topic={topic} key={topic.id}/>)}
       </div>
     )
   }
