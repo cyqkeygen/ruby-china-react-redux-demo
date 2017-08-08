@@ -13,9 +13,12 @@
 state = {
   userLogin: false,
   currentUser: {},
-  currentPage: 'home',
-  currentType: '',
-  topicsByType: {
+  ui: {
+    page: 'home',
+    type: 'excellent',
+    nodeId: 1
+  },
+  types: {
     excellent: {
       isFetching: false,
       didInvalidate: false,
@@ -45,7 +48,7 @@ state = {
       limit: 20
     },
   },
-  topicsByNode: {
+  nodes: {
     '12': {
       isFetching: false,
       didInvalidate: false,
@@ -69,9 +72,19 @@ OR
 state = {
   userLogin: false,
   currentUser: {},
-  currentPage: 'home',
-  currentType: '',
+  ui: {
+    page: 'home',
+    type: 'excellent',
+    nodeId: 1
+  },
   types: {
+    default: {
+      isFetching: false,
+      didInvalidate: false,
+      topics: [],
+      offset: 0,
+      limit: 20
+    },
     excellent: {
       isFetching: false,
       didInvalidate: false,
