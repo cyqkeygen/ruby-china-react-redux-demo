@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TopicItem from './TopicItem';
+import TopicsTypeSorter from './TopicsTypeSorter';
 import styles from '../styles/modules/Topics.scss';
 import rubyConfImage from '../images/ruby_conf.png';
 import cnodeImage from '../images/cnode.png';
@@ -91,6 +92,7 @@ class Topics extends React.Component {
     const rightColumn = this.renderRightColumn();
     return (
       <div>
+        <TopicsTypeSorter />
         {topics}
         {rightColumn}
       </div>

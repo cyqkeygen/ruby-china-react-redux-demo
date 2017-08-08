@@ -1,0 +1,10 @@
+@import 'shareStyles.scss';
+
+.box {
+  @include box;
+}
+
+.box:hover {
+  background-color: red;
+  cursor: pointer;
+}
