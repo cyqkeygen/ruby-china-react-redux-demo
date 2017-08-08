@@ -38,7 +38,7 @@ export function uiSwitch(ui = {
 }
 
 export function requestTopics(options = {
-  type: 'defalut',
+  type: 'default',
   nodeId: -1
 }) {
   const { type, nodeId } = options;

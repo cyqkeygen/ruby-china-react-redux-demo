@@ -2,9 +2,11 @@
 
 .box {
   @include box;
+  font-size: 14px;
+  padding: 4px;
 }
 
 .box:hover {
-  background-color: red;
+  background-color: #ead7d7;
   cursor: pointer;
 }
