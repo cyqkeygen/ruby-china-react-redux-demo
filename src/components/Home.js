@@ -11,21 +11,24 @@ class Home extends React.Component {
     topics: PropTypes.array.isRequired,
     isFetching: PropTypes.bool.isRequired,
     lastUpdated: PropTypes.number,
-    selectPage: PropTypes.func.isRequired,
+    uiSwitch: PropTypes.func.isRequired,
     fetchTopics: PropTypes.func.isRequired
   }
 
-  componentDidMount() {
-    const { selectPage, fetchTopics } = this.props;
-    selectPage('home');
-    fetchTopics('home', {type: 'excellent'}, {limit: 20, offset: 0});
-    this.loadNodes();
-    this.loadHotCities();
+  componentWillMount() {
+    const { uiSwitch } = this.props;
+    uiSwitch({
+      page: 'home',
+      type: 'excellent',
+      nodeId: -1
+    });
   }
 
-  loadPopularTopics() {
-    const { dispatch } = this.props;
-    dispatch(selectPage('home'));
+  componentDidMount() {
+    const { fetchTopics } = this.props;
+    fetchTopics({type: 'excellent'}, {limit: 20, offset: 0});
+    this.loadNodes();
+    this.loadHotCities();
   }
 
   loadNodes() {

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import {
-  selectPage,
+  uiSwitch,
   fetchTopics
 } from '../actions';
 import Home from '../components/Home';
@@ -28,11 +28,11 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    selectPage: (page) => {
-      dispatch(selectPage(page));
+    uiSwitch: (ui) => {
+      dispatch(uiSwitch(ui));
     },
-    fetchTopics: (page, topicsInfos, options) => {
-      dispatch(fetchTopics(page, topicsInfos, options));
+    fetchTopics: (topicsInfos, options) => {
+      dispatch(fetchTopics(topicsInfos, options));
     }
   }
 }
