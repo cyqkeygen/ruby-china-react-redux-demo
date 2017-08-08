@@ -1,16 +1,22 @@
 import { combineReducers } from 'redux';
 import { 
-  SELECT_PAGE,
+  UI_SWITCH,
   REQUEST_TOPICS_BY_TYPE,
   RECEIVE_TOPICS_BY_TYPE,
   REQUEST_TOPICS_BY_NODE,
   RECEIVE_TOPICS_BY_NODE,
 } from '../actions';
 
-function selectPage(state = 'home', action) {
-  switch (action.type) {
-    case SELECT_PAGE:
-      return action.page;
+function uiSwitch(state = {}, action) {
+  const { type, page, topicsType, nodeId } = action;
+  switch (type) {
+    case UI_SWITCH:
+      return {
+        ...state,
+        page,
+        type: topicsType,
+        nodeId
+      };
     default:
       return state
   }
@@ -114,7 +120,7 @@ function nodes(state = {}, action) {
 }
 
 const rootReducer = combineReducers({
-  selectPage,
+  uiSwitch,
   types,
   nodes
 });

@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-fetch';
 import { createActions } from 'redux-actions';
 
-export const SELECT_PAGE = 'SELECT_PAGE';
+export const UI_SWITCH = 'UI_SWITCH';
 export const REQUEST_TOPICS_BY_TYPE = 'REQUEST_TOPICS_BY_TYPE';
 export const RECEIVE_TOPICS_BY_TYPE = 'RECEIVE_TOPICS_BY_TYPE';
 export const REQUEST_TOPICS_BY_NODE = 'REQUEST_TOPICS_BY_NODE';
@@ -16,18 +16,25 @@ const requestTopicsUrl = `https://ruby-china.org/api/v3/topics`;
   SELECT_PAGE: page => ({ page }),
 }); */
 
+export function identifyPositive(nodeId) {
+  return typeof nodeId === 'number' && nodeId > 0;
+}
+
 /*  
  *  page enum ['home', 'topics','jobs']
  *  */
-export function selectPage(page) {
+export function uiSwitch(ui = {
+  page: 'home',
+  type: 'excellent',
+  nodeId: -1,
+}) {
+  const { page, type, nodeId } = ui;
   return {
-    type: SELECT_PAGE,
-    page
-  }
-}
-
-function identifyPositive(nodeId) {
-  return typeof nodeId === 'number' && nodeId > 0;
+    type: UI_SWITCH,
+    page,
+    topicsType: type,
+    nodeId
+  };
 }
 
 export function requestTopics(options = {
@@ -70,12 +77,6 @@ export function receiveTopics(options = {
       receivedAt: Date.now()
     }
   }
-  return {
-    type: RECEIVE_TOPICS,
-    page,
-    topics,
-    receivedAt: Date.now()
-  }
 }
 
 const urlPayload = (type, nodeId = -1, options = {
@@ -91,13 +92,12 @@ const urlPayload = (type, nodeId = -1, options = {
   }
 }
 
-export const fetchTopics = (page = 'home', topicsInfo, options = {
+export const fetchTopics = (topicsInfo, options = {
   limit: 25,
   offset: 0
 })  => (dispatch, getState) => {
   const { type, nodeId } = topicsInfo;
   const url = requestTopicsUrl + urlPayload(type, nodeId, options);
-  dispatch(selectPage(page));
   dispatch(requestTopics({type, nodeId}));
   fetch(url)
     .then(res => res.json())

@@ -13,8 +13,11 @@
 state = {
   userLogin: false,
   currentUser: {},
-  currentPage: 'home',
-  currentType: '',
+  uiSwitch: {
+    page: 'home',
+    type: 'excellent',
+    nodeId: 1,
+  },
   topicsByType: {
     excellent: {
       isFetching: false,
@@ -69,8 +72,11 @@ OR
 state = {
   userLogin: false,
   currentUser: {},
-  currentPage: 'home',
-  currentType: '',
+  uiSwitch: {
+    page: 'home',
+    type: 'excellent',
+    nodeId: 1,
+  },
   types: {
     excellent: {
       isFetching: false,
