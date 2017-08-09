@@ -6,9 +6,13 @@ export const REQUEST_TOPICS_BY_TYPE = 'REQUEST_TOPICS_BY_TYPE';
 export const RECEIVE_TOPICS_BY_TYPE = 'RECEIVE_TOPICS_BY_TYPE';
 export const REQUEST_TOPICS_BY_NODE = 'REQUEST_TOPICS_BY_NODE';
 export const RECEIVE_TOPICS_BY_NODE = 'RECEIVE_TOPICS_BY_NODE';
+export const REQUEST_ALL_NODES = 'REQUEST_ALL_NODES';
+export const RECEIVE_ALL_NODES = 'RECEIVE_ALL_NODES';
 export const USER_LOGIN = 'USER_LOGIN';
 export const USER_LOGOUT = 'USER_LOGOUT';
-const requestTopicsUrl = `https://ruby-china.org/api/v3/topics`;
+
+const requestTopicsUrl = 'https://ruby-china.org/api/v3/topics';
+const requestAllNodesUrl = 'https://ruby-china.org/api/v3/nodes';
 
 /* export const {
   selectPage,
@@ -109,4 +113,25 @@ export const fetchTopics = (topicsInfo, options = {
       }));
     }
     );
+}
+
+export const requestAllNodes = () => {
+  return {
+    type: REQUEST_ALL_NODES,
+  }
+}
+
+export const receiveAllNodes = (nodes) => {
+  return {
+    type: RECEIVE_ALL_NODES,
+    nodes,
+    receivedAt: Date.now()
+  }
+}
+
+export const fetchAllNodes = () => (dispatch, getState) => {
+  dispatch(requestAllNodes);
+  fetch(requestAllNodesUrl)
+    .then(res => res.json())
+    .then(json => dispatch(receiveAllNodes(nodes: json.nodes)))
 }

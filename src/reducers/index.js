@@ -93,7 +93,8 @@ function createReducer(reducerFunction, reducerName) {
     
   }
 }
-function types(state = {}, action) {
+
+function topicsByTypes(state = {}, action) {
   switch(action.type) {
     case REQUEST_TOPICS_BY_TYPE:
     case RECEIVE_TOPICS_BY_TYPE:
@@ -106,7 +107,7 @@ function types(state = {}, action) {
   }
 }
 
-function nodes(state = {}, action) {
+function topicsByNodes(state = {}, action) {
   switch (action.type) {
     case REQUEST_TOPICS_BY_NODE:
     case RECEIVE_TOPICS_BY_NODE:
@@ -119,10 +120,18 @@ function nodes(state = {}, action) {
   }
 }
 
+function allNodes(state = [], action) {
+  switch(action.type) {
+    default:
+      return state;
+  }
+}
+
 const rootReducer = combineReducers({
   uiSwitch,
-  types,
-  nodes
+  topicsByTypes,
+  topicsByNodes,
+  allNodes
 });
 
 export default rootReducer;

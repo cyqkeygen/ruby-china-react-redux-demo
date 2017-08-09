@@ -7,14 +7,14 @@ import {
 } from '../actions';
 
 function mapStateToProps(state) {
-  const { uiSwitch, types, nodes } = state;
+  const { uiSwitch, topicsByTypes, topicsByNodes } = state;
   const { page, type, nodeId } = uiSwitch;
   let source, child;
   if (identifyPositive(nodeId)) {
-    source = nodes;
+    source = topicsByNodes;
     child = nodeId;
   } else {
-    source = types;
+    source = topicsByTypes;
     child = type;
   }
   const {

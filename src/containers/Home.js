@@ -6,7 +6,7 @@ import {
 import Home from '../components/Home';
 
 function mapStateToProps(state) {
-  const { types } = state;
+  const { topicsByTypes } = state;
   const { excellent } = types;
   const {
     isFetching,
