@@ -7,7 +7,7 @@ import Home from '../components/Home';
 
 function mapStateToProps(state) {
   const { topicsByTypes } = state;
-  const { excellent } = types;
+  const { excellent } = topicsByTypes;
   const {
     isFetching,
     receiveAt,
