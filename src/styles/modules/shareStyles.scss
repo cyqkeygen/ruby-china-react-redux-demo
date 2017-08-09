@@ -8,3 +8,15 @@
   @include box;
   display: inline-block;
 }
+
+@mixin banner {
+  font-size: 14px;
+  padding: 6px 15px;
+}
+
+@mixin title {
+  @include banner;
+  background-color: #fafafa;
+  border-bottom: 1px solid #eee;
+}
+

@@ -1,7 +1,11 @@
 @import 'shareStyles.scss';
 
 .box {
-  @include box;
+  padding: 6px;
+}
+
+.box:hover {
+  cursor: pointer;
 }
 
 .image-out {
@@ -9,10 +13,9 @@
 }
 
 .image {
-  height: 72px;
-  width: 72px;
-  position: relative;
-  display: inline-block;
+  height: 48px;
+  width: 48px;
+  border-radius: 120px;
 }
 
 .infos {
@@ -22,6 +25,7 @@
   vertical-align: top;
   width: 100000px;
   overflow: hidden;
+  border: 0;
 }
 
 .title {
@@ -38,12 +42,26 @@
   @include box;
   text-align: right;
   display: table-cell;
-  vertical-align: top;
+  text-align: center;
+  vertical-align: middle;
+  border: 0;
 }
 
 .count-num {
   display: inline-block;
-  width: 40px;
+  line-height: 11px;
+  color: #fff;
+  min-width: 32px;
+  text-align: center;
+  border-radius: 80px;
+  padding: 3px 8px 3px 8px;
+  display: inline-block;
+  text-decoration: none;
+  background-color: #CFD3E6
+}
+
+.count-num:hover {
+  background-color: #A9BBDC;
 }
 
 .node {

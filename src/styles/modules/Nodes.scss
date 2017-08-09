@@ -1,5 +1,35 @@
 @import './shareStyles.scss';
 
+@mixin col {
+  @include box;
+  display: table-cell;
+}
+
 .box {
+  margin-top: 20px;
+  border: 1px solid #eeeeee;
+}
+
+.title {
+  @include title;
+}
+
+.left-col {
+  @include col;
+  border: 0;
+  width: 100px;
+  text-align: right;
+}
+
+.right-col {
+  @include col;
+  border: 0;
+}
+
+.node-item {
   @include inline-box;
+}
+
+.node-item:hover {
+  cursor: pointer;
 }

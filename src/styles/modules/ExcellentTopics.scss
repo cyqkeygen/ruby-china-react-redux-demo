@@ -1,4 +1,20 @@
+@import 'shareStyles.scss';
+
+.box {
+  border: 1px solid #eeeeee;
+}
+
+.title {
+  @include title;
+}
+
+.banner {
+  @include banner;
+  border-top: 1px solid #eee;
+}
+
 .col {
   display: table-cell;
   width: 50%;
+  font-size: 15px;
 }

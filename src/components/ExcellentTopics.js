@@ -21,14 +21,15 @@ class ExcellentTopics extends React.Component {
     const { topics } = this.props;
     const length = topics.length;
     return (
-      <div className="box">
-        <p>社区精华贴</p>
+      <div className={styles.box}>
+        <div className={styles.title}>社区精华贴</div>
         <div className={styles.col}>
           {topics.slice(0, length / 2).map( topic => <TopicItem key={topic.id} topic={topic} />)}
         </div>
         <div className={styles.col}>
           {topics.slice(length / 2).map( topic => <TopicItem key={topic.id} topic={topic} />)}
         </div>
+        <div className={styles.banner}>查看更多精华贴</div>
       </div>
     );
   }
