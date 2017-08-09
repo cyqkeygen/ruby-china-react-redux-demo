@@ -6,13 +6,13 @@ export const REQUEST_TOPICS_BY_TYPE = 'REQUEST_TOPICS_BY_TYPE';
 export const RECEIVE_TOPICS_BY_TYPE = 'RECEIVE_TOPICS_BY_TYPE';
 export const REQUEST_TOPICS_BY_NODE = 'REQUEST_TOPICS_BY_NODE';
 export const RECEIVE_TOPICS_BY_NODE = 'RECEIVE_TOPICS_BY_NODE';
-export const REQUEST_ALL_NODES = 'REQUEST_ALL_NODES';
-export const RECEIVE_ALL_NODES = 'RECEIVE_ALL_NODES';
+export const REQUEST_NODES = 'REQUEST_NODES';
+export const RECEIVE_NODES = 'RECEIVE_NODES';
 export const USER_LOGIN = 'USER_LOGIN';
 export const USER_LOGOUT = 'USER_LOGOUT';
 
 const requestTopicsUrl = 'https://ruby-china.org/api/v3/topics';
-const requestAllNodesUrl = 'https://ruby-china.org/api/v3/nodes';
+const requestNodesUrl = 'https://ruby-china.org/api/v3/nodes';
 
 /* export const {
   selectPage,
@@ -115,23 +115,23 @@ export const fetchTopics = (topicsInfo, options = {
     );
 }
 
-export const requestAllNodes = () => {
+export const requestNodes = () => {
   return {
-    type: REQUEST_ALL_NODES,
+    type: REQUEST_NODES,
   }
 }
 
-export const receiveAllNodes = (nodes) => {
+export const receiveNodes = (nodes) => {
   return {
-    type: RECEIVE_ALL_NODES,
+    type: RECEIVE_NODES,
     nodes,
     receivedAt: Date.now()
   }
 }
 
-export const fetchAllNodes = () => (dispatch, getState) => {
-  dispatch(requestAllNodes);
-  fetch(requestAllNodesUrl)
+export const fetchNodes = () => (dispatch, getState) => {
+  dispatch(requestNodes());
+  fetch(requestNodesUrl)
     .then(res => res.json())
-    .then(json => dispatch(receiveAllNodes(nodes: json.nodes)))
+    .then(json => dispatch(receiveNodes(json.nodes)))
 }

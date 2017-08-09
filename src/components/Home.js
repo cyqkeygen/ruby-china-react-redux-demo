@@ -1,18 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ExcellentTopics from '../containers/ExcellentTopics';
+import Nodes from '../containers/Nodes';
 import { Link } from 'react-router-dom';
-import TopicItem from './TopicItem';
-import { fetchTopics, selectPage } from '../actions';
 import styles from '../styles/modules/Home.scss';
 
 class Home extends React.Component {
 
   static propTypes = {
-    topics: PropTypes.array.isRequired,
-    isFetching: PropTypes.bool.isRequired,
-    lastUpdated: PropTypes.number,
     uiSwitch: PropTypes.func.isRequired,
-    fetchTopics: PropTypes.func.isRequired
   }
 
   componentWillMount() {
@@ -25,16 +21,7 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    const { fetchTopics } = this.props;
-    fetchTopics({type: 'excellent'}, {limit: 20, offset: 0});
-    this.loadNodes();
     this.loadHotCities();
-  }
-
-  loadNodes() {
-    this.setState({
-      nodes: []
-    });
   }
 
   loadHotCities() {
@@ -54,30 +41,6 @@ class Home extends React.Component {
     )
   }
 
-  renderExcellentTopics() {
-    const { topics } = this.props;
-    const length = topics.length;
-    return (
-      <div className="box">
-        <p>社区精华贴</p>
-        <div className={styles['left-col']}>
-          {topics.slice(0, length / 2).map( topic => <TopicItem key={topic.id} topic={topic} />)}
-        </div>
-        <div className={styles['right-col']}>
-          {topics.slice(length / 2).map( topic => <TopicItem key={topic.id} topic={topic} />)}
-        </div>
-      </div>
-    );
-  }
-
-  renderNodes() {
-    return (
-      <div className="box">
-        <p>讨论节点分类导航</p>
-      </div>
-    )
-  }
-
   renderHotCities() {
     return (
       <div className="box">
@@ -88,8 +51,6 @@ class Home extends React.Component {
 
   render(){
     const links = this.renderLinks();
-    const excellentTopics = this.renderExcellentTopics();
-    const nodesNavigator = this.renderNodes();
     const hotCities = this.renderHotCities();
     return (
       <div>
@@ -98,8 +59,8 @@ class Home extends React.Component {
           <p>gem source -a https://gems.ruby-china.org</p>
         </div>
         {links}
-        {excellentTopics}
-        {nodesNavigator}
+        <ExcellentTopics />
+        <Nodes />
         {hotCities}
       </div>
     )

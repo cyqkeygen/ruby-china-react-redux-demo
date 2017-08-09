@@ -1,0 +1,5 @@
+@import './shareStyles.scss';
+
+.box {
+  @include inline-box;
+}
