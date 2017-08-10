@@ -27,7 +27,9 @@
 }
 
 .node-item {
-  @include inline-box;
+  margin: 6px;
+  padding: 6px;
+  display: inline-block;
 }
 
 .node-item:hover {

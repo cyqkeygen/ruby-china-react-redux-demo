@@ -32,11 +32,11 @@ class Home extends React.Component {
 
   renderLinks() {
     return (
-      <div className="box">
-        <Link className='topics' to='/topics'>Ruby 社区</Link>
-        <Link to='/wiki'>技术文档</Link>
-        <Link to='/jobs'>招聘与求职</Link>
-        <Link to='/topics/popular'>精华文章</Link>
+      <div className={styles.box}>
+        <Link className={styles.card} to='/topics'>Ruby 社区</Link>
+        <Link className={styles.card} to='/wiki'>技术文档</Link>
+        <Link className={styles.card} to='/jobs'>招聘与求职</Link>
+        <Link className={styles.card} to='/topics/popular'>精华文章</Link>
       </div>
     )
   }
