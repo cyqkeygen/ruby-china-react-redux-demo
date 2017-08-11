@@ -91,7 +91,7 @@ class Topics extends React.Component {
     const topics = this.renderTopics();
     const rightColumn = this.renderRightColumn();
     return (
-      <div>
+      <div className='container'>
         <TopicsTypeSorter />
         {topics}
         {rightColumn}

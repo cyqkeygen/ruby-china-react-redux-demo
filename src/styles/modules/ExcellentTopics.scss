@@ -1,26 +1,19 @@
 @import 'share.scss';
 
-@mixin banner-box {
-  border-radius: 3px;
-  padding: 6px 15px;
-  background: #fafafa;
-  font-size: 14px;
-}
-
 .box {
   margin-top: 20px;
   border: 1px solid #eeeeee;
   border-radius: 3px;
 }
 
-.title {
-  @include banner-box;
-  border-bottom: 1px solid #eee;
+.panel {
+  @include panel;
   color: #777;
 }
 
 .banner {
-  @include banner-box;
+  @include panel;
+  
   a {
     text-decoration: none;
     color: #222527;

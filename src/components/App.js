@@ -19,9 +19,7 @@ class App extends React.Component {
       <Router>
         <div>
           <Header routes={routes} />
-          <div className='container'>
-            {routeComponents}
-          </div>
+          {routeComponents}
         </div>
       </Router>
     )

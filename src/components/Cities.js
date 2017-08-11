@@ -8,7 +8,7 @@ class Cities extends React.Component {
   render(){
     return (
       <div className={styles.box}>
-        <div className={styles.title}>热门城市</div>
+        <div className={styles.panel}>热门城市</div>
         <div className={styles.list}>
           {cities.map( (city, i) => 
             <Link to={`/users/city/${city}`}

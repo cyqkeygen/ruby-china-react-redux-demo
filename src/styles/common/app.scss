@@ -7,42 +7,38 @@
 }
 
 body {
+  padding-top: 70px;
   font-family: Helvetica, Arial, "PingFang SC", "Noto Sans", Roboto, "Microsoft Yahei", sans-serif;
   background: #e5e5e5;
   // background: red;
 }
 
 /* 
- * CSS媒体查询(media query) @media:
- * 不同宽度的设置生效与代码顺序有关
- * 后面样式会覆盖前面样式
- * 参考：http://blog.qiji.tech/archives/10167#media-4
- *       https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Media_queries 
- * */
-@media (min-width: 768px){
-  .container {
-    width: 750px;
-    margin: auto;
-  }
-}
-
-@media (min-width: 992px){
-  .container {
-    width: 970px;
-    margin: auto;
-  }
-}
-
-@media (min-width: 1200px){
-  .container {
-    width: 1170px;
-    margin: auto;
-  }
-}
-
+  * CSS媒体查询(media query) @media:
+  * 不同宽度的设置生效与代码顺序有关
+  * 后面样式会覆盖前面样式
+  * Refer to: http://blog.qiji.tech/archives/10167#media-4
+  *           https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Media_queries 
+  * */
 .container {
   padding-right: 15px;
   padding-left: 15px;
+  
+  @media (min-width: 768px){
+    width: 750px;
+    margin: auto;
+  }
+
+  @media (min-width: 992px){
+    // width: 970px;
+    width: 940px;
+    margin: auto;
+  }
+
+  @media (min-width: 1200px){
+    width: 1170px;
+    margin: auto;
+  }
 }
 
 .box {

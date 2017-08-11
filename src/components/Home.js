@@ -48,10 +48,10 @@ class Home extends React.Component {
   render(){
     const links = this.renderLinks();
     return (
-      <div>
+      <div className="container">
         <div className={styles.banner}>
-          <div>Ruby China 官方 RubyGems 镜像、Ruby 镜像 正式上线！</div>
-          <div>gem source -a https://gems.ruby-china.org</div>
+          <div className={styles.firstLine}>Ruby China 官方 RubyGems 镜像、Ruby 镜像 正式上线！</div>
+          <code className={styles.secondLine}>gem source -a https://gems.ruby-china.org</code>
         </div>
         {links}
         <ExcellentTopics />

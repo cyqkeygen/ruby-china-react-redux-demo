@@ -23,9 +23,14 @@ class Header extends React.Component {
     );
   }
 
+  /*  
+   *  <Link> no longer has the activeClassName or activeStyle properties.
+   *  In react-router v4 you have to use <NavLink>
+   *  Refer to: https://stackoverflow.com/questions/41131450/active-link-with-react-router
+   *            https://reacttraining.com/react-router/web/api/NavLink
+   *  */
   render(){
     const { routes } = this.props;
-
     const links = routes.map(({path, name, isFirst}, key) =>
       isFirst
         ? this.renderFirstLinkElem(path, key)
@@ -43,7 +48,7 @@ class Header extends React.Component {
           {links}
         </div>
       </div>
-    )
+    );
   }
 }
 

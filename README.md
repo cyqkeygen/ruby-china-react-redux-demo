@@ -125,3 +125,8 @@ state = {
   nodes: [],
 }
 ``
+
+- REFER TO
+    http://huziketang.com/books/react/
+    http://redux.js.org/
+    https://reacttraining.com/react-router/web/guides/philosophy

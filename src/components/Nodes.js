@@ -36,7 +36,7 @@ class Nodes extends React.Component {
     const keys = Object.keys(store);
     return (
       <div className={styles.box}>
-        <div className={styles.title}>讨论节点分类导航</div>
+        <div className={styles.panel}>讨论节点分类导航</div>
         {keys.map( key =>
           <div key={key}>
             <div className={styles['left-col']}>

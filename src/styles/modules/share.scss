@@ -12,11 +12,13 @@
 @mixin banner {
   font-size: 14px;
   padding: 6px 15px;
+  letter-spacing: 0.03em;
 }
 
-@mixin title {
+@mixin panel {
   @include banner;
   background-color: #fafafa;
   border-bottom: 1px solid #eee;
+  color: #777;
 }
 
