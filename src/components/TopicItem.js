@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import format from '../lib/dateFormat';
+import imageUrlReload from '../lib/imageUrlReload';
 import styles from '../styles/modules/TopicItem.scss';
 
 class TopicItem extends React.Component {
@@ -12,6 +13,7 @@ class TopicItem extends React.Component {
   render(){
     const { topic } = this.props;
     const time = format(topic.replied_at);
+    const avatarUrl = imageUrlReload({link: topic.user.avatar_url, usage: 'avatar'});
     const info = topic.last_reply_user_login
       ? (
           <div className={styles.info}>
@@ -24,7 +26,7 @@ class TopicItem extends React.Component {
     return (
       <div className={styles.box}>
         <div className={styles['avatar-box']}>
-          <span><img className={styles.avatar} alt={topic.user.name} src={topic.user.avatar_url}/></span>
+          <span><img className={styles.avatar} alt={topic.user.name} src={avatarUrl}/></span>
         </div>
         <div className={styles.infos}>
           <div className={styles.title}>
