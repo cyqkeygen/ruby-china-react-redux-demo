@@ -4,6 +4,7 @@ import ExcellentTopics from '../containers/ExcellentTopics';
 import Nodes from '../containers/Nodes';
 import Cities from './Cities';
 import { Link } from 'react-router-dom';
+import gift from '../images/gift.svg';
 import styles from '../styles/modules/Home.scss';
 
 const cards = [
@@ -50,8 +51,15 @@ class Home extends React.Component {
     return (
       <div className="container">
         <div className={styles.banner}>
-          <div className={styles.firstLine}>Ruby China 官方 RubyGems 镜像、Ruby 镜像 正式上线！</div>
-          <code className={styles.secondLine}>gem source -a https://gems.ruby-china.org</code>
+          <div className={styles['banner-inner']}>
+            <div className={styles['banner-inner-left']}>
+              <img src={gift} alt='pic'/>
+            </div>
+            <div className={styles['banner-inner-right']}>
+              <div className={styles.firstLine}>Ruby China 官方 RubyGems 镜像、Ruby 镜像 正式上线！</div>
+              <code className={styles.secondLine}>gem source -a https://gems.ruby-china.org</code>
+            </div>
+          </div>
         </div>
         {links}
         <ExcellentTopics />

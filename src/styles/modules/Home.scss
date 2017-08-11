@@ -14,12 +14,26 @@
 }
 
 .banner {
-  padding: 15px;
   border-radius: 3px;
-  text-align: center;
+  padding: 15px;
   font-size: 15px;
   line-height: 200%;
   background: #fff;
+}
+
+.banner-inner {
+  width: 480px;
+  margin: auto;
+}
+
+.banner-inner-left {
+  display: table-cell;
+  width: 55px;
+  vertical-align: middle;
+}
+
+.banner-inner-right {
+  display: table-cell;
 }
 
 .card-box {

@@ -8,6 +8,8 @@
 .left-col {
   @include table-box;
   width: 75%;
+  padding: 0 15px;
+  border-radius: 3px;
 }
 
 .right-col {
