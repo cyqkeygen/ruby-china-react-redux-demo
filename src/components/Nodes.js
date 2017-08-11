@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import styles from '../styles/modules/Nodes.scss';
 
 function sort(nodes) {
@@ -43,10 +44,11 @@ class Nodes extends React.Component {
             </div>
             <div className={styles['right-col']}>
               {store[key]['items'].map( item => 
-                <span key={item.id}
+                <Link to={`/topics/node${item.id}`}
+                      key={item.id}
                       className={styles['node-item']}>
                   {item.name}
-                </span>
+                </Link>
               )}
             </div>
           </div>

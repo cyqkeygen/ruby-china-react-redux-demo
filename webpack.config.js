@@ -8,7 +8,7 @@ const dashboard = new Dashboard();
 module.exports = {
   entry: {
     index: './src/index.js',
-    vendor: ['react', 'react-redux', 'react-dom', 'redux', 'prop-types']
+    vendor: ['react', 'react-redux', 'react-dom', 'redux', 'prop-types', 'react-router-dom']
   },
   output: {
     path: __dirname + '/dist',
@@ -54,7 +54,7 @@ module.exports = {
         loader: 'style-loader!css-loader!sass-loader?sourceMap=true'
       },
       {
-        test: /.(gif|jpe?g|eot|woff|ttf|svg|pdf)/,
+        test: /\.(gif|jpe?g|eot|woff|ttf|svg|pdf)/,
         exclude: /^node_modules$/,
         loader: 'file-loader?name=[name].[ext]',
       },

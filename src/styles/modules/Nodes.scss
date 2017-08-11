@@ -7,11 +7,13 @@
 
 .box {
   margin-top: 20px;
-  border: 1px solid #eeeeee;
+  background: #fff;
+  border-radius: 3px;
 }
 
 .title {
   @include title;
+  border-radius: 3px;
 }
 
 .left-col {
@@ -19,6 +21,7 @@
   border: 0;
   width: 100px;
   text-align: right;
+  color: #aaa;
 }
 
 .right-col {
@@ -30,8 +33,12 @@
   margin: 6px;
   padding: 6px;
   display: inline-block;
+  font-size: 14px;
+  text-decoration: none;
+  color: #333;
 }
 
 .node-item:hover {
   cursor: pointer;
+  text-decoration: underline;
 }

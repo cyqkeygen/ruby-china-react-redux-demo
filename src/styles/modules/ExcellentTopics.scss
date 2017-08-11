@@ -3,10 +3,12 @@
 .box {
   margin-top: 20px;
   border: 1px solid #eeeeee;
+  border-radius: 3px;
 }
 
 .title {
   @include title;
+  border-radius: 3px;
 }
 
 .banner {

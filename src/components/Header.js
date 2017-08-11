@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import styles from '../styles/modules/Header.scss';
 
 class Header extends React.Component {
   static propTypes = {
@@ -14,14 +15,13 @@ class Header extends React.Component {
   render(){
     const { routes } = this.props;
     const links = routes.map(({path, name}, key) => 
-      <li key={key} className="menu-item">
-        <Link to={path}>{name}</Link>
-      </li>
-
+      <Link to={path} className={styles.link} key={key}>{name}</Link>
     );
     
     return (
-      <ul>{links}</ul>
+      <div className={styles.header}>
+        {links}
+      </div>
     )
   }
 }

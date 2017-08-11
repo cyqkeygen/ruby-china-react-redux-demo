@@ -17,9 +17,11 @@ class App extends React.Component {
 
     return (
       <Router>
-        <div className="box">
+        <div>
           <Header routes={routes} />
-          {routeComponents}
+          <div className='container'>
+            {routeComponents}
+          </div>
           <Footer />
         </div>
       </Router>
