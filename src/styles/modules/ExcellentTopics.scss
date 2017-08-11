@@ -2,17 +2,20 @@
 
 .box {
   margin-top: 20px;
-  border: 1px solid #eeeeee;
   border-radius: 3px;
 }
 
 .panel {
   @include panel;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
   color: #777;
 }
 
 .banner {
   @include panel;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
   
   a {
     text-decoration: none;
