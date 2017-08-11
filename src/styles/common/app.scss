@@ -9,6 +9,7 @@
 body {
   font-family: Helvetica, Arial, "PingFang SC", "Noto Sans", Roboto, "Microsoft Yahei", sans-serif;
   background: #e5e5e5;
+  // background: red;
 }
 
 /* 
@@ -37,6 +38,11 @@ body {
     width: 1170px;
     margin: auto;
   }
+}
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
 .box {

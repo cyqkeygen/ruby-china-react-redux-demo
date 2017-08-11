@@ -1,7 +1,7 @@
-@import 'shareStyles.scss';
+@import 'share.scss';
 
 .box {
-  padding: 6px;
+  padding: 10px 15px;
   background: #fff;
   border-bottom: 1px solid #f0f0f0;
 }
@@ -10,11 +10,12 @@
   cursor: pointer;
 }
 
-.image-out {
+.avatar-box {
   display: table-cell;
+  padding-right: 10px;
 }
 
-.image {
+.avatar {
   height: 48px;
   width: 48px;
   border-radius: 120px;
@@ -34,10 +35,24 @@
   line-height: 30px;
   height: 30px;
   overflow: hidden;
+  font-size: 15px;
+}
+
+.node-name {
+  color: #777;
 }
 
 .title-text {
   margin-left: 8px;
+  color: #222;
+}
+
+.info{
+  color: #ABA8A6;
+  font-size: 12px;
+  margin-top: 0;
+  letter-spacing: .03em;
+  line-height: 1.4em;
 }
 
 .replies-count {

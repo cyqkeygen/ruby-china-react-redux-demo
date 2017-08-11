@@ -1,14 +1,32 @@
 .header {
-  margin-bottom: 15px;
+  position: fixed;
+  width: 100%;
+  right: 0;
+  top: 0;
   background: #fff;
 }
 
+.links {
+  @media (min-width: 768px){
+    width: 750px;
+  }
+  @media (min-width: 992px){
+    width: 970px;
+  }
+  @media (min-width: 1200px){
+    width: 1170px;
+  }
+  margin: auto;
+}
+
 .link {
-  font-size: 14px;
-  line-height: 1.5;
   display: inline-block;
   padding: 15px 15px 12px 15px;
   border-bottom: 3px solid #fff;
+  text-decoration: none;
+  font-size: 14px;
+  color: #333;
+  line-height: 1.42857143;
 }
 
 .link:hover {
@@ -16,3 +34,18 @@
   color: #EB5424;
 }
 
+.firstLink {
+  padding: 15px;
+  font-size: 18px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bolder;
+  text-decoration: none;
+  color: #666;
+  b {
+    color: #EB5424;
+  }
+}
+
+.active {
+  border-bottom: 3px solid #EB5424;
+}

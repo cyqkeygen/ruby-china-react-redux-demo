@@ -1,4 +1,11 @@
-@import 'shareStyles.scss';
+@import 'share.scss';
+
+@mixin banner-box {
+  border-radius: 3px;
+  padding: 6px 15px;
+  background: #fafafa;
+  font-size: 14px;
+}
 
 .box {
   margin-top: 20px;
@@ -7,13 +14,17 @@
 }
 
 .title {
-  @include title;
-  border-radius: 3px;
+  @include banner-box;
+  border-bottom: 1px solid #eee;
+  color: #777;
 }
 
 .banner {
-  @include banner;
-  border-top: 1px solid #eee;
+  @include banner-box;
+  a {
+    text-decoration: none;
+    color: #222527;
+  }
 }
 
 .col {

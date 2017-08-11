@@ -6,9 +6,9 @@ import Sites from './components/Sites';
 import Wiki from './components/Wiki';
 
 const routes = [
-  { path: '/', name: '首页', component: Home},
+  { path: '/', name: 'Ruby China', component: Home, isFirst: true },
   { path: '/topics', name: '社区', component: Topics},
-  { path: '/headlines', name: '头条', component: Headlines},
+  // { path: '/headlines', name: '头条', component: Headlines},
   { path: '/jobs', name: '招聘', component: Jobs},
   { path: '/wiki', name: 'Wiki', component: Wiki},
   { path: '/sites', name: '酷站', component: Sites},

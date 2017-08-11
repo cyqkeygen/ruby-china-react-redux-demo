@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import TopicItem from './TopicItem';
 import styles from '../styles/modules/ExcellentTopics.scss';
 
@@ -29,7 +30,11 @@ class ExcellentTopics extends React.Component {
         <div className={styles.col}>
           {topics.slice(length / 2).map( topic => <TopicItem key={topic.id} topic={topic} />)}
         </div>
-        <div className={styles.banner}>查看更多精华贴</div>
+        <div className={styles.banner}>
+          <Link to='/topics/popular'>
+            查看更多精华贴
+          </Link>
+        </div>
       </div>
     );
   }
