@@ -56,13 +56,16 @@
 .link-out {
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
-  padding: 41px 15px;
+  // padding: 41px 15px;
   text-align: center;
   background: #fff;
 }
 
 .link {
   text-decoration: none;
+  display: inline-block;
+  padding: 41px 15px;
+  color: #777;
 }
 
 .text {

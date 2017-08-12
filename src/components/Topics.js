@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import TopicItem from './TopicItem';
 import TopicsTypeSorter from './TopicsTypeSorter';
 import styles from '../styles/modules/Topics.scss';
@@ -40,7 +41,9 @@ class Topics extends React.Component {
     const { topics } = this.props;
     return (
       <div className={styles['left-col']}>
-        {topics.map( topic => <TopicItem topic={topic} key={topic.id}/>)}
+        <div className={styles['item-list']}>
+          {topics.map( topic => <TopicItem topic={topic} key={topic.id}/>)}
+        </div>
       </div>
     )
   }
@@ -48,40 +51,77 @@ class Topics extends React.Component {
   renderRightColumn() {
     return (
       <div className={styles['right-col']}>
-        <div className={styles['right-col-box']}>
-          <button>
+        <div className={styles['new-topic-link']}>
+          <Link to='/topics/new'>
             发布新话题
-          </button>
+          </Link>
         </div>
-        <div className={styles['right-col-box']}>
-          <div>小贴士</div>
-          <div>本站是开源的哦，访问 http://gethomeland.com 获得更多信息</div>
+        <div className={styles.panel}>
+          <div className={styles['panel-head']}>小贴士</div>
+          <div className={styles['panel-body']}>本站是开源的哦，访问 http://gethomeland.com 获得更多信息</div>
         </div>
-        <div className={styles['right-col-box']}>
-          <div>社区规则</div>
-          <div>提问的智慧</div>
+        <div className={styles.panel}>
+          <div className={styles['panel-head']}>社区规则</div>
+          <div className={styles['panel-body']}>提问的智慧</div>
         </div>
-        <div className={styles['right-col-box']}>
-          <div>推荐Ruby镜像</div>
-          <div>Ruby 镜像</div>
-          <div>RubyGems 镜像</div>
-          <div>Rails 视频教程</div>
-          <div>Rails Guides 中文版</div>
-          <div>Ruby on Rails 教程</div>
+        <div className={styles.panel}>
+          <div className={styles['panel-head']}>推荐Ruby镜像</div>
+          <ul className={styles['list-group']}>
+            <li className={styles['list-group-item']}>Ruby 镜像</li>
+            <li className={styles['list-group-item']}>RubyGems 镜像</li>
+            <li className={styles['list-group-item']}>Rails 视频教程</li>
+            <li className={styles['list-group-item']}>Rails Guides 中文版</li>
+            <li className={styles['list-group-item']}>Ruby on Rails 教程</li>
+          </ul>
         </div>
-        <div className={styles['right-col-box']}>
-          <img src={rubyConfImage} className={styles.image} alt='Ruby Conf' />
+        <div className={styles.panel}>
+          <img className={styles['conf-image']} src={rubyConfImage} alt='Ruby Conf' />
         </div>
-        <div className={styles['right-col-box']}>
-          友情社区
-          <img src={cnodeImage} className={styles.image} alt='https://cnodejs.org' />
-          <img src={gocnImage} className={styles.image} alt='https://gocn.io' />
-          <img src={phpHubImage} className={styles.image} alt='https://larael-china.org' />
-          <img src={elixirImage} className={styles.image} alt='http://elixir.com' />
-          <img src={testerHomeImage} className={styles.image} alt='https://testerhome.com' />
+        <div className={styles.panel}>
+          <div className={styles['panel-head']}>友情社区</div>
+          <div className={styles['image-list-group']}>
+            <div className={styles['list-group-item']}>
+              <a href='https://cnodejs.org'>
+                <img src={cnodeImage} className={styles['site-image']} alt='https://cnodejs.org' />
+              </a>
+            </div>
+            <div className={styles['list-group-item']}>
+              <a href='https://gocn.io'>
+                <img src={gocnImage} className={styles['site-image']} alt='https://gocn.io' />
+              </a>
+            </div>
+            <div className={styles['list-group-item']}>
+              <a href='https://larael-china.org'>
+                <img src={phpHubImage} className={styles['site-image']} alt='https://larael-china.org' />
+              </a>
+            </div>
+            <div className={styles['list-group-item']}>
+              <a href='http://elixir.com'>
+                <img src={elixirImage} className={styles['site-image']} alt='http://elixir.com' />
+              </a>
+            </div>
+            <div className={styles['list-group-item']}>
+              <a href='https://testerhome.com'>
+                <img src={testerHomeImage} className={styles['site-image']} alt='https://testerhome.com' />
+              </a>
+            </div>
+          </div>
         </div>
-        <div className={styles['right-col-box']}>
-          统计信息
+        <div className={styles.panel}>
+          <div className={styles['panel-head']}>
+            统计信息
+          </div>
+          <div className={styles['list-group']}>
+            <div className={styles['list-group-item']}>
+              社区会员: 32564 人
+            </div>
+            <div className={styles['list-group-item']}>
+              社区会员: 32564 人
+            </div>
+            <div className={styles['list-group-item']}>
+              回帖数: 328143 条
+            </div>
+          </div>
         </div>
       </div>
     )

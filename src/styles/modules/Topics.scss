@@ -2,30 +2,109 @@
 
 @mixin table-box {
   @include box;
-  display: table-cell;
 }
 
 .left-col {
-  @include table-box;
+  display: inline-block;
   width: 75%;
-  padding: 0 15px;
+  border: 1px;
   border-radius: 3px;
+
+  .item-list {
+    padding: 0 15px;
+  }
 }
 
 .right-col {
-  @include table-box;
+  display: inline-block;
   width: 25%;
+  border-radius: 3px;
+  padding: 0;
+  vertical-align: top;
 }
 
-.right-col-box {
-  @include box;
+.new-topic-link {
+  margin-bottom: 15px;
+  border-radius: 3px;
+  padding: 15px;
+  background: #fff;
+
+  a {
+    display: block;
+    background: #356DD0;
+    border-color: #0D54AB;
+    padding: 5px 12px;
+    color: #fff;
+    border-radius: 3px;
+    text-align: center;
+    text-decoration: none;
+    line-height: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+  }
+}
+
+.panel {
+  margin-bottom: 15px;
+  border-radius: 3px;
+  border: 1px;
+  border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+  background: #fff;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.panel-head {
+  @include panel;
+  border-color: #ddd;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.panel-body {
+  padding: 15px;
+}
+
+@mixin list-group {
+  margin: 0;
+  padding: 0;
+  list-style-type: desc;
+}
+
+.list-group {
+  @include list-group;
+}
+
+.image-list-group {
+  @include list-group;
+  text-align: center;
+}
+
+.list-group-item {
+  display: block;
+  position: relative;
+  padding: 10px 15px;
+  margin-bottom: -1px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-width: 1px 0;
+
+  a {
+  }
+}
+
+.site-image {
+  width: 130px;
+}
+
+.conf-image {
+  width: 100%;
+  border-radius: 3px;
 }
 
 .friend {
   padding: 0;
-}
-
-.image {
-  width: 100%;
-  border-top: 1px solid #e6e6e6;
 }
