@@ -1,10 +1,8 @@
 import { combineReducers } from 'redux';
 import { 
   UI_SWITCH,
-  REQUEST_TOPICS_BY_TYPE,
-  RECEIVE_TOPICS_BY_TYPE,
-  REQUEST_TOPICS_BY_NODE,
-  RECEIVE_TOPICS_BY_NODE,
+  REQUEST_TOPICS,
+  RECEIVE_TOPICS,
   REQUEST_NODES,
   RECEIVE_NODES
 } from '../actions';
@@ -27,24 +25,20 @@ function uiSwitch(state = {}, action) {
 function topics(state = {
   isFetching: false,
   didInvalidate: false,
-  topics: [],
-  offset: 0,
-  limit: 20
+  items: []
 }, action) {
   switch (action.type) {
-    case REQUEST_TOPICS_BY_TYPE:
-    case REQUEST_TOPICS_BY_NODE:
+    case REQUEST_TOPICS:
       return {
         ...state,
         isFetching: true
       };
-    case RECEIVE_TOPICS_BY_TYPE:
-    case RECEIVE_TOPICS_BY_NODE:
+    case RECEIVE_TOPICS:
       return {
         ...state,
         isFetching: false,
-        topics: action.topics,
-        lastUpdated: Date.now()
+        items: action.items,
+        receivedAt: action.receivedAt
       };
     default:
       return state;
@@ -54,71 +48,9 @@ function topics(state = {
 function createSubReducer(state, action) {
 }
 
-/*
- * action = {type: REQUEST_TOPICS_BY_TYPE, topicType: 'excellent'}
- * action = {type: RECEIVE_TOPICS_BY_TYPE, topicType: 'excellent', topics: []}
- * */
-function topicsByType(state = {}, action) {
-  switch (action.type) {
-    case REQUEST_TOPICS_BY_TYPE:
-    case RECEIVE_TOPICS_BY_TYPE:
-      return {
-        ...state,
-        [action.topicType]: topics(state[action.topicType], action)
-      };
-    default:
-      return state;
-  }
-}
-
-/* 
- *  action = {type: REQUEST_TOPICS_BY_NODE, nodeId: 1}
- *  action = {type: RECEIVE_TOPICS_BY_NODE, nodeId: 1, topics: []}
- * */
-function topicsByNode(state = {}, action) {
-  switch (action.type) {
-    case REQUEST_TOPICS_BY_NODE:
-    case RECEIVE_TOPICS_BY_NODE:
-      return {
-        ...state,
-        [action.nodeId]: topics(state[action.nodeId], action)
-      }
-      break;
-    
-    default:
-      
-  } 
-}
-
 function createReducer(reducerFunction, reducerName) {
   return (state, action) => {
     
-  }
-}
-
-function topicsByType(state = {}, action) {
-  switch(action.type) {
-    case REQUEST_TOPICS_BY_TYPE:
-    case RECEIVE_TOPICS_BY_TYPE:
-      return {
-        ...state,
-        [action.topicsType]: topics(state[action.topicsType], action)
-      };
-    default:
-      return state;
-  }
-}
-
-function topicsByNode(state = {}, action) {
-  switch (action.type) {
-    case REQUEST_TOPICS_BY_NODE:
-    case RECEIVE_TOPICS_BY_NODE:
-      return {
-        ...state,
-        [action.nodeId]: topics(state[action.nodeId], action)
-      };
-    default:
-      return state;
   }
 }
 
@@ -146,8 +78,7 @@ function nodes(state = {
 
 const rootReducer = combineReducers({
   uiSwitch,
-  topicsByType,
-  topicsByNode,
+  topics,
   nodes
 });
 

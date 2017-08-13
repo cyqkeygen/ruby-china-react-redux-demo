@@ -2,10 +2,8 @@ import fetch from 'isomorphic-fetch';
 import { createActions } from 'redux-actions';
 
 export const UI_SWITCH = 'UI_SWITCH';
-export const REQUEST_TOPICS_BY_TYPE = 'REQUEST_TOPICS_BY_TYPE';
-export const RECEIVE_TOPICS_BY_TYPE = 'RECEIVE_TOPICS_BY_TYPE';
-export const REQUEST_TOPICS_BY_NODE = 'REQUEST_TOPICS_BY_NODE';
-export const RECEIVE_TOPICS_BY_NODE = 'RECEIVE_TOPICS_BY_NODE';
+export const REQUEST_TOPICS = 'REQUEST_TOPICS';
+export const RECEIVE_TOPICS = 'RECEIVE_TOPICS';
 export const REQUEST_NODES = 'REQUEST_NODES';
 export const RECEIVE_NODES = 'RECEIVE_NODES';
 export const USER_LOGIN = 'USER_LOGIN';
@@ -41,78 +39,62 @@ export function uiSwitch(ui = {
   };
 }
 
-export function requestTopics(options = {
-  type: 'default',
-  nodeId: -1
-}) {
-  const { type, nodeId } = options;
-  if (identifyPositive(nodeId)) {
-    return {
-      type: REQUEST_TOPICS_BY_NODE,
-      nodeId: nodeId
-    }
-  } else {
-    return {
-      type: REQUEST_TOPICS_BY_TYPE,
-      topicsType: type
-    }
+export function requestTopics() {
+  return {
+    type: REQUEST_TOPICS
   }
 }
 
-export function receiveTopics(options = {
-  type: 'default',
-  nodeId: -1,
-  topics: []
-}) {
-  const { type, nodeId, topics } = options;
+export function receiveTopics(topics = []) {
   if (topics.length <= 0) return;
-  if (identifyPositive(nodeId)) {
-    return {
-      type: RECEIVE_TOPICS_BY_NODE,
-      nodeId,
-      topics,
-      receiveAt: Date.now()
-    }
+  return {
+    type: RECEIVE_TOPICS,
+    items: topics,
+    isFetching: false,
+    receivedAt: Date.now()
+  };
+}
+
+const getUrl = (match, options) => {
+  const { params } = match;
+  const { sub } = params;
+  const { offset, limit } = options;
+  const defaultUrl = requestTopicsUrl + `?limit=${limit}&offset=${offset}`;
+  if (!sub) return defaultUrl;
+  if (sub.startsWith('node')) {
+    const nodeId = sub.slice(4);
+    return requestTopicsUrl + `?limit=${limit}&offset=${offset}&node_id=${nodeId}`;
+  }
+  const types = ['popular', 'no_reply', 'last', 'excellent'];
+  if (types.indexOf(sub) >= 0) {
+    return requestTopicsUrl + `?limit=${limit}&offset=${offset}&type=${sub}`;
   } else {
-    return {
-      type: RECEIVE_TOPICS_BY_TYPE,
-      topicsType: type,
-      topics,
-      receivedAt: Date.now()
-    }
+    return defaultUrl;
   }
 }
 
-const urlPayload = (type, nodeId = -1, options = {
-  limit: 25,
-  offset: 0
-}) => {
-  const { limit, offset } = options;
-  const defaultPayload = `?limit=${limit}&offset=${offset}`;
-  if (identifyPositive(nodeId)) {
-    return defaultPayload + `&node_id=${nodeId}`;
-  } else {
-    return defaultPayload + `&type=${type}`;
-  }
-}
-
-export const fetchTopics = (topicsInfo, options = {
+export const fetchTopics = (match, options = {
   limit: 25,
   offset: 0
 })  => (dispatch, getState) => {
-  const { type, nodeId } = topicsInfo;
-  const url = requestTopicsUrl + urlPayload(type, nodeId, options);
-  dispatch(requestTopics({type, nodeId}));
+  const url = getUrl(match, options);
+  console.log(url)
+  dispatch(requestTopics());
   fetch(url)
     .then(res => res.json())
-    .then(json => {
-      dispatch(receiveTopics({
-        nodeId,
-        type,
-        topics: json.topics
-      }));
+    .then(json => dispatch(receiveTopics(json.topics)));
+}
+
+export const fetchExcellentTopics = (options = {
+  offset: 0,
+  limit: 20
+}) => {
+  const match = {
+    params: {
+      sub: 'excellent'
     }
-    );
+  };
+  return fetchTopics(match, options);
 }
 
 export const requestNodes = () => {
