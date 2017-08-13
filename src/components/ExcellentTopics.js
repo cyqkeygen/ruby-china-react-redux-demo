@@ -8,30 +8,30 @@ class ExcellentTopics extends React.Component {
 
   static propTypes = {
     isFetching: PropTypes.bool.isRequired,
-    topics: PropTypes.array.isRequired,
+    items: PropTypes.array.isRequired,
     receivedAt: PropTypes.number,
     fetchTopics: PropTypes.func.isRequired,
   }
 
   componentDidMount() {
     const { fetchTopics } = this.props;
-    fetchTopics({type: 'excellent'}, {limit: 20, offset: 0});
+    fetchTopics();
   }
 
   render(){
-    const { topics } = this.props;
-    const length = topics.length;
+    const { items } = this.props;
+    const length = items.length;
     return (
       <div className={styles.box}>
         <div className={styles.panel}>社区精华贴</div>
         <div className={styles.col}>
-          {topics.slice(0, length / 2).map( topic => <TopicItem key={topic.id} topic={topic} />)}
+          {items.slice(0, length / 2).map( item => <TopicItem key={item.id} topic={item} />)}
         </div>
         <div className={styles.col}>
-          {topics.slice(length / 2).map( topic => <TopicItem key={topic.id} topic={topic} />)}
+          {items.slice(length / 2).map( item => <TopicItem key={item.id} topic={item} />)}
         </div>
         <div className={styles.banner}>
-          <Link to='/topics/popular'>
+          <Link to='/items/popular'>
             查看更多精华贴
           </Link>
         </div>

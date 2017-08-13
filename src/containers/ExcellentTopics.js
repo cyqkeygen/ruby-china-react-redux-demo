@@ -1,32 +1,31 @@
 import { connect } from 'react-redux';
-import { fetchTopics } from '../actions';
+import { fetchExcellentTopics } from '../actions';
 import ExcellentTopics from '../components/ExcellentTopics';
 
 function mapStateToProps(state) {
-  const { topicsByType } = state;
-  const { excellent } = topicsByType;
+  const { topics } = state;
   const {
     isFetching,
-    topics,
+    items,
     receivedAt
-  } = excellent
-    ? excellent
+  } = topics
+    ? topics
     : {
-      isFetching: true,
-      topics: []
-    };
+        isFetching: true,
+        items: []
+      };
 
   return {
     isFetching,
-    topics,
+    items,
     receivedAt
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchTopics: (topicsInfos, options) => {
-      dispatch(fetchTopics(topicsInfos, options));
+    fetchTopics: (options) => {
+      dispatch(fetchExcellentTopics());
     }
   };
 }
