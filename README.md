@@ -72,8 +72,11 @@
 ## 2. TODOS
   0. Topics page nodes sorter
   1. Topics pagination
-  2. User login / logout
-  3. Topic Component (show, create, edit, delete)
+  2. Jobs page
+  3. Wiki page
+  4. Cool sites page
+  5. User login / logout
+  6. Topic Component (show, create, edit, delete)
 
 ## 3. Bugs Fix
 

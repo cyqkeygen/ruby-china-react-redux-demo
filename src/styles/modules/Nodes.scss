@@ -10,17 +10,27 @@
   border-radius: 3px;
 }
 
-.panel {
+.panel-head {
   @include panel;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
 }
 
+.panel-body {
+  padding: 15px;
+}
+
+.node-catagory {
+  margin-bottom: 10px;
+}
+
 .left-col {
   @include col;
   border: 0;
-  width: 100px;
+  min-width: 130px;
+  padding-right: 10px;
   text-align: right;
+  font-size: 14px;
   color: #aaa;
 }
 
@@ -30,11 +40,13 @@
 }
 
 .node-item {
-  margin: 6px;
-  padding: 6px;
   display: inline-block;
+  width: 100px;
+  margin-bottom: 10px;
   font-size: 14px;
+  line-height: 1.42857143;
   text-decoration: none;
+  text-align: left;
   color: #333;
 }
 

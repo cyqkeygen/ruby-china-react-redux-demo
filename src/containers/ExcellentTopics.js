@@ -4,7 +4,6 @@ import ExcellentTopics from '../components/ExcellentTopics';
 
 function mapStateToProps(state) {
   const { topics } = state;
-  console.log(topics)
   const {
     isFetching,
     items,
