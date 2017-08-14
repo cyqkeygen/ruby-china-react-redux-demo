@@ -10,6 +10,6 @@
   `yarn add react react-redux redux react-router-dom redux-logger redux-thunk prop-types --no-progress`
 
 - REFER TO
-    http://huziketang.com/books/react/
-    http://redux.js.org/
-    https://reacttraining.com/react-router/web/guides/philosophy
+  - http://huziketang.com/books/react/
+  -  http://redux.js.org/
+  -  https://reacttraining.com/react-router/web/guides/philosophy
