@@ -69,8 +69,18 @@
     ````
     
     ````
+## 2. TODOS
+  0. Topics page nodes sorter
+  1. Topics pagination
+  2. User login / logout
+  3. Topic Component (show, create, edit, delete)
 
-## 2. References
+## 3. Bugs Fix
+
+## 4. References
   - [**React.js 小书**](http://huziketang.com/books/react)
   - [**Redux book**](http://redux.js.org)
   - [**REACT TRAINING / REACT ROUTER**](https://reacttraining.com/react-router/web/api/BrowserRouter)
+
+
+
