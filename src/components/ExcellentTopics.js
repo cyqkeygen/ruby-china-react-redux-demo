@@ -13,30 +13,41 @@ class ExcellentTopics extends React.Component {
     fetchTopics: PropTypes.func.isRequired,
   }
 
-  componentDidMount() {
+  componentWillMount() {
     const { fetchTopics } = this.props;
     fetchTopics();
   }
 
+  componentDidMount() {
+  }
+
   render(){
-    const { items } = this.props;
+    const { items, isFetching } = this.props;
     const length = items.length;
-    return (
-      <div className={styles.box}>
-        <div className={styles.panel}>社区精华贴</div>
-        <div className={styles.col}>
-          {items.slice(0, length / 2).map( item => <TopicItem key={item.id} topic={item} />)}
+    if (isFetching) {
+      return (
+        <div>
+          loading
         </div>
-        <div className={styles.col}>
-          {items.slice(length / 2).map( item => <TopicItem key={item.id} topic={item} />)}
+      )
+    } else {
+      return (
+        <div className={styles.box}>
+          <div className={styles.panel}>社区精华贴</div>
+          <div className={styles.col}>
+            {items.slice(0, length / 2).map( item => <TopicItem key={item.id} topic={item} />)}
+          </div>
+          <div className={styles.col}>
+            {items.slice(length / 2).map( item => <TopicItem key={item.id} topic={item} />)}
+          </div>
+          <div className={styles.banner}>
+            <Link to='/items/popular'>
+              查看更多精华贴
+            </Link>
+          </div>
         </div>
-        <div className={styles.banner}>
-          <Link to='/items/popular'>
-            查看更多精华贴
-          </Link>
-        </div>
-      </div>
-    );
+      );
+    }
   }
 }
 

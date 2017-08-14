@@ -1,12 +1,24 @@
+@mixin container {
+  
+  @media (min-width: 768px){
+    width: 750px;
+  }
+
+  @media (min-width: 992px){
+    // width: 970px;
+    width: 940px;
+  }
+
+  @media (min-width: 1200px){
+    width: 1170px;
+  }
+  margin: auto;
+}
+
 @mixin box {
   margin: 6px;
   border: 1px solid #e6e6e6;
   padding: 6px;
-}
-
-@mixin inline-box {
-  @include box;
-  display: inline-block;
 }
 
 @mixin banner {

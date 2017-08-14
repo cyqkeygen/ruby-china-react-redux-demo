@@ -53,7 +53,7 @@ class Home extends React.Component {
         <div className={styles.banner}>
           <div className={styles['banner-inner']}>
             <div className={styles['banner-inner-left']}>
-              <img src={gift} alt='pic'/>
+              <img src={gift} alt='pic' height='55' width='55'/>
             </div>
             <div className={styles['banner-inner-right']}>
               <div className={styles.firstLine}>Ruby China 官方 RubyGems 镜像、Ruby 镜像 正式上线！</div>

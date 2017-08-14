@@ -1,7 +1,6 @@
 @import './share.scss';
 
 @mixin col {
-  @include box;
   display: table-cell;
 }
 

@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 import { NavLink, Link } from 'react-router-dom';
 import styles from '../styles/modules/Header.scss';
 
+const headerLinks = [
+  {path: '/', name: 'Ruby China'},
+  {path: '/topics', name: '社区'},
+  {path: '/jobs', name: '招聘'},
+  {path: '/wiki', name: 'Wiki'},
+  {path: '/sites', name: '酷站'}
+];
+
 class Header extends React.Component {
-  static propTypes = {
-    routes: PropTypes.array.isRequired
-  }
-
-  renderNavigator() {}
-
-  renderUserArea() {}
-
   renderFirstLinkElem(path, key) {
     return (
       <Link className={styles.firstLink}
@@ -30,9 +30,8 @@ class Header extends React.Component {
    *            https://reacttraining.com/react-router/web/api/NavLink
    *  */
   render(){
-    const { routes } = this.props;
-    const links = routes.map(({path, name, isFirst}, key) =>
-      isFirst
+    const links = headerLinks.map(({path, name}, key) =>
+      key === 0
         ? this.renderFirstLinkElem(path, key)
         : <NavLink className={styles.link}
                    activeClassName={styles.active}

@@ -6,6 +6,8 @@ export const REQUEST_TOPICS = 'REQUEST_TOPICS';
 export const RECEIVE_TOPICS = 'RECEIVE_TOPICS';
 export const REQUEST_NODES = 'REQUEST_NODES';
 export const RECEIVE_NODES = 'RECEIVE_NODES';
+export const REQUEST_NODE = 'REQUEST_NODE';
+export const RECEIVE_NODE = 'RECEIVE_NODE';
 export const USER_LOGIN = 'USER_LOGIN';
 export const USER_LOGOUT = 'USER_LOGOUT';
 
@@ -18,13 +20,7 @@ const requestNodesUrl = 'https://ruby-china.org/api/v3/nodes';
   SELECT_PAGE: page => ({ page }),
 }); */
 
-export function identifyPositive(nodeId) {
-  return typeof nodeId === 'number' && nodeId > 0;
-}
-
-/*  
- *  page enum ['home', 'topics','jobs']
- *  */
+// useless
 export function uiSwitch(ui = {
   page: 'home',
   type: 'excellent',
@@ -41,16 +37,14 @@ export function uiSwitch(ui = {
 
 export function requestTopics() {
   return {
-    type: REQUEST_TOPICS
-  }
+    type: REQUEST_TOPICS,
+  };
 }
 
 export function receiveTopics(topics = []) {
-  if (topics.length <= 0) return;
   return {
     type: RECEIVE_TOPICS,
-    items: topics,
-    isFetching: false,
+    topics,
     receivedAt: Date.now()
   };
 }
@@ -65,7 +59,7 @@ const getUrl = (match, options) => {
     const nodeId = sub.slice(4);
     return requestTopicsUrl + `?limit=${limit}&offset=${offset}&node_id=${nodeId}`;
   }
-  const types = ['popular', 'no_reply', 'last', 'excellent'];
+  const types = ['popular', 'no_reply', 'recent', 'excellent'];
   if (types.indexOf(sub) >= 0) {
     return requestTopicsUrl + `?limit=${limit}&offset=${offset}&type=${sub}`;
   } else {
@@ -116,4 +110,24 @@ export const fetchNodes = () => (dispatch, getState) => {
   fetch(requestNodesUrl)
     .then(res => res.json())
     .then(json => dispatch(receiveNodes(json.nodes)))
+}
+
+export const requestNode = () => {
+  return {
+    type: REQUEST_NODE
+  }
+}
+
+export const receiveNode = (node) => {
+  return {
+    type: RECEIVE_NODE,
+    node
+  }
+}
+export const fetchNode = (nodeId) => (dispatch, getState) => {
+  dispatch(requestNode());
+  const url = `https://ruby-china.org/api/v3/nodes/${nodeId}`;
+  fetch(url)
+    .then(res => res.json())
+    .then(json => dispatch(receiveNode(json.node)))
 }

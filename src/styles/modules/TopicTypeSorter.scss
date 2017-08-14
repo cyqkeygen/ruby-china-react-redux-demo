@@ -1,6 +1,35 @@
 @import 'share.scss';
 
-.box {
+.sorter {
+  margin-top: -20px;
+  margin-bottom: 15px;
+  box-shadow: 0 1px 0px rgba(0,0,0,0.02);
+  background: #f9f9f9;
+}
+
+.links {
+  @include container;
+  padding: 8px 0;
+}
+
+@mixin box {
+  display: inline-block;
+  margin-right: 15px;
+  padding: 8px;
+  font-size: 14px;
+  line-height: 100%;
+  text-decoration: none;
+  color: #606060;
+}
+
+.allNodes {
   @include box;
-  margin-bottom: 20px;
+}
+
+.link {
+  @include box;
+}
+
+.active {
+  border-bottom: 2px dotted #666666;
 }

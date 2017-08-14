@@ -1,35 +1,29 @@
 import { connect } from 'react-redux';
 import Topics from '../components/Topics';
 import {
-  identifyPositive,
   uiSwitch,
-  fetchTopics
+  fetchTopics,
+  fetchNode
 } from '../actions';
 
 function mapStateToProps(state) {
-  const { uiSwitch, topicsByType, topicsByNode } = state;
-  const { page, type, nodeId } = uiSwitch;
-  let source, child;
-  if (identifyPositive(nodeId)) {
-    source = topicsByNode;
-    child = nodeId;
-  } else {
-    source = topicsByType;
-    child = type;
-  }
+  const { topics, currentNode } = state;
   const {
     isFetching,
-    topics,
+    items,
     receivedAt
-  } = source[child] || {
+  } = topics || {
     isFetching: true,
-    topics: []
-  }
+    items: []
+  };
+
+  const { node } = currentNode;
 
   return {
     isFetching,
-    topics,
-    receivedAt
+    items,
+    receivedAt,
+    node
   }
 }
 
@@ -40,6 +34,9 @@ function mapDispatchToProps(dispatch, state) {
     },
     fetchTopics: (topicsInfos, options) => {
       dispatch(fetchTopics(topicsInfos, options))
+    },
+    fetchNode: (nodeId) => {
+      dispatch(fetchNode(nodeId))
     }
   }
 }

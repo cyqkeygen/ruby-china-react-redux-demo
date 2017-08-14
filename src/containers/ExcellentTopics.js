@@ -4,6 +4,7 @@ import ExcellentTopics from '../components/ExcellentTopics';
 
 function mapStateToProps(state) {
   const { topics } = state;
+  console.log(topics)
   const {
     isFetching,
     items,
@@ -24,7 +25,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchTopics: (options) => {
+    fetchTopics: () => {
       dispatch(fetchExcellentTopics());
     }
   };

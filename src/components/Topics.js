@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import TopicItem from './TopicItem';
 import TopicsTypeSorter from './TopicsTypeSorter';
+import NodeInstruction from './NodeInstruction';
 import styles from '../styles/modules/Topics.scss';
 import rubyConfImage from '../images/ruby_conf.png';
 import cnodeImage from '../images/cnode.png';
@@ -11,38 +12,67 @@ import phpHubImage from '../images/php_hub.png';
 import elixirImage from '../images/elixir.png';
 import testerHomeImage from '../images/tester_home.png';
 
+/*  
+ *  Topics组件被使用时，总体上分为2种情况：
+ *  1. 被节点【社区】使用时，需要加入一个2级分类栏
+ *  2. 被节点比如【招聘],【新手问题】(node52)使用时，需要插入一个节点说明栏。
+ *  所以需要检测组件传入的props属性。
+ *  1. 如果props.match.params.sub为 undefined, 'popular', 'no_reply',
+ *  'recent'，则加入2级分类栏。
+ *  2. 如果props.match.params.sub为 'nodeXX',则插入一个节点说明栏。
+ *  最后需要对sub的信息进行区分，并使用不同参数调用fetchTopics action
+ *  */
 class Topics extends React.Component {
 
   static propTypes = {
-    topics: PropTypes.array.isRequired,
     fetchTopics: PropTypes.func.isRequired,
+    fetchNode: PropTypes.func.isRequired,
+    items: PropTypes.array.isRequired,
+    node: PropTypes.object.isRequired,
     uiSwitch: PropTypes.func.isRequired
   }
 
-  componentWillMount() {
-    const { uiSwitch } = this.props;
+  componentWillReceiveProps(nextProps) {
+    if (this.props.location !== nextProps.location) {
+      this.fetchSource(nextProps);
+    }
+  }
+
+  componentDidMount() {
+    const { uiSwitch, fetchTopics, match } = this.props;
     uiSwitch({
       page: 'topics',
       type: 'default',
       nodeId: -1
     });
+    this.fetchSource();
   }
 
-  componentDidMount() {
+  fetchSource(nextProps) {
+    this.getTopics(nextProps);
+    this.getNode(nextProps);
+  }
+
+  getTopics(nextProps) {
     const { fetchTopics } = this.props;
-    fetchTopics({
-      type: 'default',
-      limit: 25,
-      offset: 0
-    });
+    const { match } = nextProps ? nextProps : this.props;
+    fetchTopics(match);
+  }
+
+  getNode(nextProps) {
+    const { fetchTopics, fetchNode } = this.props;
+    const { match } = nextProps ? nextProps : this.props;
+    const { params } = match;
+    const { sub } = params;
+    if (sub && sub.startsWith('node')) fetchNode(sub.slice(4));
   }
 
   renderTopics() {
-    const { topics } = this.props;
+    const { items } = this.props;
     return (
       <div className={styles['left-col']}>
         <div className={styles['item-list']}>
-          {topics.map( topic => <TopicItem topic={topic} key={topic.id}/>)}
+          {items.map( item => <TopicItem topic={item} key={item.id}/>)}
         </div>
       </div>
     )
@@ -128,14 +158,26 @@ class Topics extends React.Component {
   }
 
   render(){
-    const topics = this.renderTopics();
+    const { isFetching, match, node } = this.props;
+    const { params } = match;
+    const { sub } = params;
+    const topics = isFetching
+      ? (<div className={styles['left-col']}></div>)
+      : this.renderTopics();
+    
+    const nav = sub && sub.startsWith('node')
+      ? <NodeInstruction node={node}/>
+      : <TopicsTypeSorter />;
     const rightColumn = this.renderRightColumn();
     return (
-      <div className='container'>
-        <TopicsTypeSorter />
-        {topics}
-        {rightColumn}
+      <div className='container-wrapper'>
+        {nav}
+        <div className='container'>
+          {topics}
+          {rightColumn}
+        </div>
       </div>
+      
     )
   }
 }

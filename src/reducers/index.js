@@ -4,7 +4,9 @@ import {
   REQUEST_TOPICS,
   RECEIVE_TOPICS,
   REQUEST_NODES,
-  RECEIVE_NODES
+  RECEIVE_NODES,
+  REQUEST_NODE,
+  RECEIVE_NODE
 } from '../actions';
 
 function uiSwitch(state = {}, action) {
@@ -22,6 +24,50 @@ function uiSwitch(state = {}, action) {
   }
 }
 
+/* function topicsWrapper(state = {
+  isFetching: false,
+  didInvalidate: false,
+  items: []
+}, action) {
+  console.log(action)
+  switch (action.type) {
+    case REQUEST_TOPICS:
+      return {
+        ...state,
+        isFetching: true
+      };
+    case RECEIVE_TOPICS:
+      return {
+        ...state,
+        isFetching: false,
+        items: action.topics
+      };
+    default:
+      return state;
+  }
+}
+
+function topics(state = {}, action)  {
+  switch (action.type) {
+    case REQUEST_TOPICS:
+    case RECEIVE_TOPICS:
+      if (action.topicType) {
+        return {
+          ...state,
+          [action.topicType]: topicsWrapper(state[action.topicType], action)
+        }
+      } else {
+        return {
+          ...state,
+          [action.nodeId]: topicsWrapper(state[action.nodeId], action)
+        }
+      }
+      
+    default:
+     return state;
+  }
+} */
+
 function topics(state = {
   isFetching: false,
   didInvalidate: false,
@@ -37,20 +83,11 @@ function topics(state = {
       return {
         ...state,
         isFetching: false,
-        items: action.items,
+        items: action.topics,
         receivedAt: action.receivedAt
       };
     default:
       return state;
-  }
-}
-
-function createSubReducer(state, action) {
-}
-
-function createReducer(reducerFunction, reducerName) {
-  return (state, action) => {
-    
   }
 }
 
@@ -76,10 +113,33 @@ function nodes(state = {
   }
 }
 
+function currentNode(state = {
+  isFetching: false,
+  node: {}
+}, action) {
+  switch (action.type) {
+    case REQUEST_NODE:
+      return {
+        ...state,
+        isFetching: true
+      }
+    case RECEIVE_NODE:
+      return {
+        ...state,
+        isFetching: false,
+        node: action.node,
+        receivedAt: Date.now()
+      }
+    default:
+     return state;
+  } 
+}
+
 const rootReducer = combineReducers({
   uiSwitch,
   topics,
-  nodes
+  nodes,
+  currentNode
 });
 
 export default rootReducer;

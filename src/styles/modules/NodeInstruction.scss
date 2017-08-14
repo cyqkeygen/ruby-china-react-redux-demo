@@ -1,0 +1,32 @@
+@import 'share.scss';
+
+.container {
+  margin-top: -20px;
+  margin-bottom: 15px;
+  box-shadow: 0 1px 0px rgba(0,0,0,0.02);
+  background: #f9f9f9;
+}
+
+.instruction {
+  @include container;
+  padding: 8px 0;
+}
+
+.title {
+  display: inline-block;
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 8px;
+  line-height: 1.42857143;
+}
+
+.count {
+  color: #999;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.summary {
+  font-size: 14px;
+  line-height: 1.42857143;
+}
