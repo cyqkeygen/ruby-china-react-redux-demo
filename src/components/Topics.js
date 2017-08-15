@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import TopicItem from './TopicItem';
-import TopicsTypeSorter from './TopicsTypeSorter';
+import TopicTypes from './TopicTypes';
+import TopicNodes from '../containers/TopicNodes';
 import NodeInstruction from './NodeInstruction';
 import styles from '../styles/modules/Topics.scss';
 import rubyConfImage from '../images/ruby_conf.png';
@@ -30,6 +31,13 @@ class Topics extends React.Component {
     items: PropTypes.array.isRequired,
     node: PropTypes.object.isRequired,
     uiSwitch: PropTypes.func.isRequired
+  }
+
+  constructor() {
+    super();
+    this.state = {
+      nodesShow: false
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -65,6 +73,12 @@ class Topics extends React.Component {
     const { params } = match;
     const { sub } = params;
     if (sub && sub.startsWith('node')) fetchNode(sub.slice(4));
+  }
+
+  handleNodeBtnClick() {
+    this.setState({
+      nodesShow: !this.state.nodesShow
+    });
   }
 
   renderTopics() {
@@ -165,12 +179,31 @@ class Topics extends React.Component {
       ? (<div className={styles['left-col']}></div>)
       : this.renderTopics();
     
+    const { nodesShow } = this.state;
+
+    /* 
+     * TODO: Use a modal box to replace nodes sorter.
+     * */
+    const nodesBtnStyles = nodesShow ? 'show-nodes-all' : 'hide-nodes-all';
     const nav = sub && sub.startsWith('node')
       ? <NodeInstruction node={node}/>
-      : <TopicsTypeSorter />;
+      : <div className={styles.sorter}>
+          <div className={styles['inner-sorter']}>
+            <div className={styles['nodes-box']}>
+              <div className={styles['nodes-btn']}
+                   onClick={this.handleNodeBtnClick.bind(this)}>
+                所有节点
+              </div>
+            </div>
+            <TopicTypes />
+          </div>
+        </div>;
     const rightColumn = this.renderRightColumn();
     return (
       <div className='container-wrapper'>
+        <div className={styles[nodesBtnStyles]}>
+          <TopicNodes />
+        </div>
         {nav}
         <div className='container'>
           {topics}

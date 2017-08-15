@@ -15,6 +15,42 @@
   }
 }
 
+.sorter {
+  margin-top: -20px;
+  margin-bottom: 15px;
+  padding: 8px 0;
+  box-shadow: 0 1px 0px rgba(0,0,0,0.02);
+  background: #f9f9f9;
+}
+
+.inner-sorter {
+  @include container;
+  padding: 0 15px;
+}
+
+.nodes-box {
+  display: inline-block;
+}
+
+.nodes-btn {
+  @include link-box;
+  cursor: pointer;
+}
+
+.hide-nodes-all {
+  display: none;
+}
+
+.show-nodes-all {
+  display: block;
+  position: fixed;
+  z-index: 2;
+  border-radius: 6px;
+  // width: 100%;
+  // height: 100%;
+  /* bac */kground-color: rgba(0,0,0,0.1);
+}
+
 .right-col {
   display: inline-block;
   width: 25%;

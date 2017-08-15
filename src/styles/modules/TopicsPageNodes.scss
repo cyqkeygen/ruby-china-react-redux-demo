@@ -5,15 +5,22 @@
 }
 
 .box {
-  margin-top: 20px;
+  position: fixed;
+  width: 768px;
+  margin: auto;
+  left: 0;
+  right: 0;
+  border-radius: 6px;
   background: #fff;
-  border-radius: 3px;
 }
 
 .panel-head {
-  @include panel;
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bolder;
+  line-height: 1.42857143;
+  padding: 15px 15px 0 15px;
 }
 
 .panel-body {

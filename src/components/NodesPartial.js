@@ -1,33 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import { Link } from 'react-router-dom';
-import NodesPartial from './NodesPartial';
-// import { sortedCatagIds, sort } from '../lib/nodes';
-// import styles from '../styles/modules/Nodes.scss';
+import { Link } from 'react-router-dom';
+import { sortedCatagIds, sort } from '../lib/nodes';
+import homeStyles from '../styles/modules/HomePageNodes.scss';
+import topicsStyles from '../styles/modules/TopicsPageNodes.scss';
 
-class Nodes extends React.Component {
+class NodesPartial extends React.Component {
 
   static propTypes = {
-    isFetching: PropTypes.bool.isRequired,
-    items: PropTypes.array.isRequired,
-    receivedAt: PropTypes.number,
-    fetch: PropTypes.func.isRequired,
-  }
-
-  componentDidMount() {
-    const { fetch } = this.props;
-    fetch();
+    partialHeadContent: PropTypes.string.isRequired,
+    page: PropTypes.string.isRequired,
+    nodes: PropTypes.array.isRequired
   }
 
   render(){
-    const { items } = this.props;
-    const props = {
-      partialHeadContent: '讨论节点分类导航',
-      page: 'home',
-      nodes: items
-    };
-    return <NodesPartial {...props} />
-    /* const store = sort(items);
+    const { partialHeadContent, page, nodes } = this.props;
+    const styles = page === 'home' ? homeStyles : topicsStyles;
+    const store = sort(nodes);
     const keys = Object.keys(store);
     const sortKeys = [];
     if (keys.length > 0) {
@@ -37,7 +26,7 @@ class Nodes extends React.Component {
     }
     return (
       <div className={styles.box}>
-        <div className={styles['panel-head']}>讨论节点分类导航</div>
+        <div className={styles['panel-head']}>{partialHeadContent}</div>
         <div className={styles['panel-body']}>
           {sortKeys.map( key =>
             <div className={styles['node-catagories']} key={key}>
@@ -57,8 +46,8 @@ class Nodes extends React.Component {
           )}
         </div>
       </div>
-    ) */
+    )
   }
 }
 
-export default Nodes;
+export default NodesPartial;

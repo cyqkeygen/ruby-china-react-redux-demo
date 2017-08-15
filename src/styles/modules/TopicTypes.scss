@@ -1,0 +1,17 @@
+@import 'share.scss';
+
+.links {
+  display: inline-block;
+}
+
+.allNodes {
+  @include box;
+}
+
+.link {
+  @include link-box;
+}
+
+.active {
+  border-bottom: 2px dotted #666666;
+}

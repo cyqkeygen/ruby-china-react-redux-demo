@@ -1,7 +1,7 @@
 ## 0. Installation
   - You first need to install the package manager, such as **npm** or **yarn**.
   - In this demo, I use [**yarn**](https://yarnpkg.com/en/docs/install) rather than npm.
-  - Run the script to install dependences:
+  - Run the script below to install dependences:
 
      ````
      yarn init
