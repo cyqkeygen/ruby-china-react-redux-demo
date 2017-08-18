@@ -1,0 +1,88 @@
+@import 'share.scss';
+
+.container {
+  @include container;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.left-col {
+  display: inline-block;
+  width: 75%;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  box-sizing: border-box;
+}
+
+.topic {
+  background: #fff;
+}
+
+.topic-header {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+  background: #fafafa;
+}
+
+.topic-header-content {
+  display: table-cell;
+  vertical-align: top;
+  width: 10000px;
+}
+
+.topic-header-title {
+  margin-bottom: 8px;
+  font-size: 20px;
+  line-height: 150%;
+}
+
+.topic-header-node {
+  margin-right: 3px;
+  text-decoration: none;
+  color: #777;
+}
+
+.topic-header-node:hover {
+  text-decoration: underline;
+}
+
+.topic-header-info {
+  color: #c0c0c0;
+  font-size: 12px;
+}
+
+.topic-associate-name {
+  color: #356DD0;
+  text-decoration: none;
+}
+
+.topic-associate-name:hover {
+  text-decoration: underline;
+}
+
+.avatar {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.topic-awesome {
+
+}
+
+.topic-body {
+  padding: 15px;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
+.topic-footer {
+
+}
+
+.right-col {
+  display: inline-block;
+  vertical-align: top;
+  width: 25%;
+  background: #fff;
+}
