@@ -53,7 +53,9 @@ class App extends React.Component {
               forceRefresh={!supportsHistory}>
         <div>
           <Header />
-          {Routes}
+          <Switch>
+            {Routes}
+          </Switch>
         </div>
       </Router>
     )

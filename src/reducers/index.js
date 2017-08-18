@@ -6,7 +6,9 @@ import {
   REQUEST_NODES,
   RECEIVE_NODES,
   REQUEST_NODE,
-  RECEIVE_NODE
+  RECEIVE_NODE,
+  REQUEST_TOPIC,
+  RECEIVE_TOPIC
 } from '../actions';
 
 function uiSwitch(state = {}, action) {
@@ -135,11 +137,34 @@ function currentNode(state = {
   } 
 }
 
+function currentTopic(state = {
+  isFetching: false,
+  topic: {}
+}, action) {
+  switch (action.type) {
+    case REQUEST_TOPIC:
+      return {
+        ...state,
+        isFetching: true
+      }
+    case RECEIVE_TOPIC:
+      return {
+        ...state,
+        isFetching: false,
+        receivedAt: Date.now(),
+        topic: action.topic
+      }
+    default:
+      return state;
+  }
+}
+
 const rootReducer = combineReducers({
   uiSwitch,
   topics,
   nodes,
-  currentNode
+  currentNode,
+  currentTopic
 });
 
 export default rootReducer;

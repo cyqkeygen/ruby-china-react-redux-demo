@@ -32,8 +32,8 @@ function mapDispatchToProps(dispatch, state) {
     uiSwitch: (ui) => {
       dispatch(uiSwitch(ui))
     },
-    fetchTopics: (topicsInfos, options) => {
-      dispatch(fetchTopics(topicsInfos, options))
+    fetchTopics: (infos, options) => {
+      dispatch(fetchTopics(infos, options))
     },
     fetchNode: (nodeId) => {
       dispatch(fetchNode(nodeId))

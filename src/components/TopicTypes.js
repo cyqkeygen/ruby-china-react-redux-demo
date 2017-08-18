@@ -25,7 +25,7 @@ class TopicTypes extends React.Component {
         </NavLink>
         <NavLink className={styles.link}
                 activeClassName={styles.active}
-                to='/topics/recent'>
+                to='/topics/last'>
           最新发布
         </NavLink>
       </div>

@@ -50,18 +50,31 @@ export function receiveTopics(topics = []) {
 }
 
 const getUrl = (match, options) => {
-  const { params } = match;
-  const { sub } = params;
+  const { params, path, url } = match;
   const { offset, limit } = options;
   const defaultUrl = requestTopicsUrl + `?limit=${limit}&offset=${offset}`;
-  if (!sub) return defaultUrl;
-  if (sub.startsWith('node')) {
-    const nodeId = sub.slice(4);
-    return requestTopicsUrl + `?limit=${limit}&offset=${offset}&node_id=${nodeId}`;
+
+  if (path === '/topics/node:id') {
+    const { id }= params;
+    return defaultUrl + `&node_id=${id}`;
   }
-  const types = ['popular', 'no_reply', 'recent', 'excellent'];
-  if (types.indexOf(sub) >= 0) {
-    return requestTopicsUrl + `?limit=${limit}&offset=${offset}&type=${sub}`;
+
+  const paths = [
+    '/topics',
+    '/topics/excellent',
+    '/topics/popular',
+    '/topics/no_reply',
+    '/topics/last'
+  ];
+
+  if (paths.indexOf(path) >=0) {
+    let type = path.slice(8);
+    if (type === 'last') type = 'recent';
+    if (!type) {
+      return defaultUrl;
+    } else {
+      return defaultUrl + `&type=${type}`;
+    }
   } else {
     return defaultUrl;
   }
@@ -72,7 +85,6 @@ export const fetchTopics = (match, options = {
   offset: 0
 })  => (dispatch, getState) => {
   const url = getUrl(match, options);
-  console.log(url)
   dispatch(requestTopics());
   fetch(url)
     .then(res => res.json())
@@ -84,9 +96,7 @@ export const fetchExcellentTopics = (options = {
   limit: 20
 }) => {
   const match = {
-    params: {
-      sub: 'excellent'
-    }
+    path: '/topics/excellent'
   };
   return fetchTopics(match, options);
 }
@@ -130,4 +140,32 @@ export const fetchNode = (nodeId) => (dispatch, getState) => {
   fetch(url)
     .then(res => res.json())
     .then(json => dispatch(receiveNode(json.node)))
+}
+
+
+/* Fetch single topic */
+export const REQUEST_TOPIC = 'REQUEST_TOPIC';
+export const RECEIVE_TOPIC = 'RECEIVE_TOPIC';
+
+export function requestTopic() {
+  return {
+    type: REQUEST_TOPIC
+  }
+}
+
+export function receiveTopic(topic) {
+  return {
+    type: RECEIVE_TOPIC,
+    topic
+  }
+}
+
+export function fetchTopic(topicId) {
+  return function(dispatch, getState) {
+    dispatch(requestTopic());
+    const url = `https://ruby-china.org/api/v3/topics/${topicId}`;
+    fetch(url)
+      .then(res => res.json())
+      .then(json => dispatch(receiveTopic(json.topic)))
+  }
 }

@@ -68,11 +68,11 @@ class Topics extends React.Component {
   }
 
   getNode(nextProps) {
-    const { fetchTopics, fetchNode } = this.props;
+    const { fetchNode } = this.props;
     const { match } = nextProps ? nextProps : this.props;
     const { params } = match;
-    const { sub } = params;
-    if (sub && sub.startsWith('node')) fetchNode(sub.slice(4));
+    const { id } = params;
+    if (id) fetchNode(id);
   }
 
   handleNodeBtnClick() {
@@ -172,9 +172,9 @@ class Topics extends React.Component {
   }
 
   render(){
-    const { isFetching, match, node } = this.props;
+    const { isFetching, match, path, node } = this.props;
     const { params } = match;
-    const { sub } = params;
+    const { id } = params;
     const topics = isFetching
       ? (<div className={styles['left-col']}></div>)
       : this.renderTopics();
@@ -185,7 +185,7 @@ class Topics extends React.Component {
      * TODO: Use a modal box to replace nodes sorter.
      * */
     const nodesBtnStyles = nodesShow ? 'show-nodes-all' : 'hide-nodes-all';
-    const nav = sub && sub.startsWith('node')
+    const nav = id 
       ? <NodeInstruction node={node}/>
       : <div className={styles.sorter}>
           <div className={styles['inner-sorter']}>
