@@ -76,7 +76,9 @@
   3. Wiki page
   4. Cool sites page
   5. User login / logout
-  6. Topic Component (show, create, edit, delete)
+  6. City users page
+  7. User page
+  8. Topic Component (show, create, edit, delete)
 
 ## 3. Bugs Fix
 
