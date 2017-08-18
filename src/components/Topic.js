@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import ReactMarkdowm from 'react-markdown';
 import format from '../lib/dateFormat';
 import imageUrlReload from '../lib/imageUrlReload';
 import styles from '../styles/modules/Topic.scss';
@@ -87,7 +88,7 @@ class Topic extends React.Component {
                 </div>
               </div>
               <div className={styles['topic-body']}>
-                <div>{title}</div>
+                <ReactMarkdowm source={body} />
               </div>
             </div>
           </div>
