@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import format from '../lib/dateFormat';
 import imageUrlReload from '../lib/imageUrlReload';
 import styles from '../styles/modules/TopicItem.scss';
@@ -12,14 +13,26 @@ class TopicItem extends React.Component {
 
   render(){
     const { topic } = this.props;
-    const time = format(topic.replied_at);
-    const avatarUrl = imageUrlReload({link: topic.user.avatar_url, usage: 'avatar'});
-    const info = topic.last_reply_user_login
+    const {
+      id,
+      user,
+      last_reply_user_login,
+      replied_at,
+      replies_count,
+      node_name,
+      title
+    } = topic;
+    const { name, avatar_url } = user;
+    const time = format(replied_at);
+    const avatarUrl = imageUrlReload({link: avatar_url, usage: 'avatar'});
+    const path = `/topics/${id}`;
+    const info = last_reply_user_login
       ? (
           <div className={styles.info}>
-            <span className={styles['info-item']}>{topic.user.name}</span>
-            <span className={styles['info-item']}> •  最后由 {topic.last_reply_user_login}</span>
-            <span className={styles['info-item']}>回复于 {time}</span>
+            <span className={styles['info-item']}>{name}</span>
+            <span className={styles['info-item']}> •  最后由 {last_reply_user_login}  </span>
+            回复于 
+            <span className={styles['info-reply']}> {time}</span>
           </div>
         )
       : (<div></div>);
@@ -30,13 +43,16 @@ class TopicItem extends React.Component {
         </div>
         <div className={styles.infos}>
           <div className={styles.title}>
-            <span className={styles['node-name']}>{topic.node_name}</span>
-            <span className={styles['title-text']}>{topic.title}</span>
+            <Link className={styles['title-link']}
+                  to={path}>
+              <span className={styles['node-name']}>{node_name}</span>
+              {title}
+            </Link>
           </div>
           {info}
         </div>
         <div className={styles['replies-count']}>
-          <span className={styles['count-num']}>{topic.replies_count}</span>
+          <span className={styles['count-num']}>{replies_count}</span>
         </div>
       </div>
     )

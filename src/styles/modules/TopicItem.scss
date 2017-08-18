@@ -8,7 +8,6 @@
 }
 
 .box:hover {
-  cursor: pointer;
 }
 
 .avatar-box {
@@ -40,12 +39,13 @@
 }
 
 .node-name {
+  margin-right: 8px;
   color: #777;
 }
 
-.title-text {
-  margin-left: 8px;
+.title-link {
   color: #222;
+  text-decoration: none;
 }
 
 .info{
@@ -54,6 +54,11 @@
   margin-top: 0;
   letter-spacing: .03em;
   line-height: 1.4em;
+}
+
+.info-reply {
+  border-bottom: 1px dotted #777;
+  cursor: help;
 }
 
 .replies-count {
