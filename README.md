@@ -70,15 +70,21 @@
     
     ````
 ## 2. TODOS
-  0. Topics page nodes sorter
-  1. Topics pagination
-  2. Jobs page
-  3. Wiki page
-  4. Cool sites page
-  5. User login / logout
-  6. City users page
-  7. User page
-  8. Topic Component (show, create, edit, delete)
+
+  | Seq   | TODOS                                        |            |
+  | ----- |:--------------------------------------------:| ----------:|
+  |   0   | Home page                                    | Done       |
+  |   1   | Topics page                                  | Done       |
+  |   2   | Topics page nodes sorter                     | proceeding |
+  |   3   | Topics page types sorter                     | Done       |
+  |   4   | Topics pagination                            |            |
+  |   5   | Jobs page                                    |            |
+  |   6   | Wiki page                                    |            |
+  |   7   | Cool sites page                              |            |
+  |   8   | User login / logout                          |            |
+  |   9   | City users page                              |            |
+  |   10  | User page                                    |            |
+  |   11  | Topic Component (show, create, edit, delete) | proceeding |
 
 ## 3. Bugs Fix
 
