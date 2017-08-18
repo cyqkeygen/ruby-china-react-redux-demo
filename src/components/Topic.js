@@ -88,7 +88,9 @@ class Topic extends React.Component {
                 </div>
               </div>
               <div className={styles['topic-body']}>
-                <ReactMarkdowm source={body} />
+                <div className='markdown'>
+                  <ReactMarkdowm source={body} />
+                </div>
               </div>
             </div>
           </div>
