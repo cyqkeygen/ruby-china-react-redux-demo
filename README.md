@@ -86,7 +86,10 @@
   |   9   | City users page                              |            |
   |   10  | User page                                    |            |
   |   11  | Topic Component (show, create, edit, delete) | proceeding |
-  |   12  | Device Detection , Responsive                | proceeding |
+  |   12  | Device Detection , Responsive                |            |
+  |   13  | Memory leak detection in browser             |            |
+  |   14  | Css & js optimize                            |            |
+  |   15  | Deployment                                   |            |
 
 ## 3. Bugs Fix
 
