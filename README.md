@@ -85,6 +85,7 @@
   |   9   | City users page                              |            |
   |   10  | User page                                    |            |
   |   11  | Topic Component (show, create, edit, delete) | proceeding |
+  |   12  | Device Detection , Responsive                | proceeding |
 
 ## 3. Bugs Fix
 
