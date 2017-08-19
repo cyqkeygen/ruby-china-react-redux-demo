@@ -65,6 +65,12 @@ class Home extends React.Component {
         <ExcellentTopics />
         <Nodes />
         <Cities />
+        <div style={{
+          'text-align': 'center',
+          'font-weight': 'bolder',
+          'margin-top': '18px'}}>
+          山寨版Ruby China, 尊重原版！！
+        </div>
       </div>
     )
   }
