@@ -18,6 +18,14 @@ class Topic extends React.Component {
     fetch(match.params.id);
   }
 
+  handleScrollTop() {
+    window.scrollTo(document.body.scrollHeight, 0);
+  }
+
+  handleScrollBottom() {
+    window.scrollTo(0, document.body.scrollHeight);
+  }
+
   render(){
     const { topic } = this.props;
     const {
@@ -28,6 +36,7 @@ class Topic extends React.Component {
       last_reply_user_login,
       created_at,
       replied_at,
+      replies_count,
       excellent,
       likes_count,
       user,
@@ -92,12 +101,41 @@ class Topic extends React.Component {
                   <ReactMarkdowm source={body} />
                 </div>
               </div>
+              <div className={styles['topic-footer']}>
+                <div className={styles['topic-likes']}>
+                  {likes_count} 个赞
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.replies}>
+              <div className={styles['replies-header']}>
+                共收到 {replies_count} 条回复
+              </div>
+              <div className={styles['replies-body']}>
+                <div className={styles['replies-item']}>
+                  Repliy here
+                </div>
+              </div>
             </div>
           </div>
           <div className={styles['right-col']}>
-            <div>{likes_count}</div>
+            <div className={styles['right-sidebar']}>
+              <span onClick={this.handleScrollTop}
+                    className={styles['top-btn']}>
+                    TOP
+              </span>
+              <div className={styles['right-col-likes']}>
+                <a href='#' className={styles['like-btn']}>{likes_count}个赞</a>
+              </div>
+              <span onClick={this.handleScrollBottom}
+                    className={styles['bottom-btn']}>
+                    BOTTOM
+              </span>
+              <div className={styles['replies-count']}>共收到 {replies_count} 条回复</div>
+            </div>
           </div>
-        </div> 
+        </div>
       )
     } else {
       return (<div className={styles.container}></div>)
