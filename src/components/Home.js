@@ -56,6 +56,10 @@ class Home extends React.Component {
               <img src={gift} alt='pic' height='55' width='55'/>
             </div>
             <div className={styles['banner-inner-right']}>
+              <div className={styles.firstLine}>
+                (React Redux)模仿Ruby China, 尊重原版！！
+                <a href='https://github.com/cyqkeygen/ruby-china-react-redux-demo'>github</a>
+              </div>
               <div className={styles.firstLine}>Ruby China 官方 RubyGems 镜像、Ruby 镜像 正式上线！</div>
               <code className={styles.secondLine}>gem source -a https://gems.ruby-china.org</code>
             </div>
@@ -69,7 +73,6 @@ class Home extends React.Component {
           textAlign: 'center',
           fontWeight: 'bolder',
           marginTop: '18px'}}>
-          山寨版Ruby China, 尊重原版！！
         </div>
       </div>
     )
