@@ -85,11 +85,12 @@
   |   8   | User login / logout                          |            |
   |   9   | City users page                              |            |
   |   10  | User page                                    |            |
-  |   11  | Topic Component (show, create, edit, delete) | proceeding |
-  |   12  | Device Detection , Responsive                |            |
-  |   13  | Memory leak detection in browser             |            |
-  |   14  | Css & js optimize                            |            |
-  |   15  | Deployment                                   |            |
+  |   11  | Test                                         |            |
+  |   12  | Topic Component (show, create, edit, delete) | proceeding |
+  |   13  | Device Detection , Responsive                |            |
+  |   14  | Memory leak detection in browser             |            |
+  |   15  | Css & js optimize                            |            |
+  |   16  | Deployment                                   |            |
 
 ## 3. Bugs Fix
 
