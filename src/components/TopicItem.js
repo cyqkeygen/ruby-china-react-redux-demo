@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import format from '../lib/dateFormat';
+import { format } from '../lib/dateFormat';
 import imageUrlReload from '../lib/imageUrlReload';
 import styles from '../styles/modules/TopicItem.scss';
 

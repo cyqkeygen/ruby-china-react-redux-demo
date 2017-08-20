@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ReactMarkdowm from 'react-markdown';
-import format from '../lib/dateFormat';
+import Replies from '../containers/Replies';
+import { format } from '../lib/dateFormat';
 import imageUrlReload from '../lib/imageUrlReload';
 import styles from '../styles/modules/Topic.scss';
 
@@ -113,9 +114,7 @@ class Topic extends React.Component {
                 共收到 {replies_count} 条回复
               </div>
               <div className={styles['replies-body']}>
-                <div className={styles['replies-item']}>
-                  Repliy here
-                </div>
+                <Replies topicId={id}/>
               </div>
             </div>
           </div>

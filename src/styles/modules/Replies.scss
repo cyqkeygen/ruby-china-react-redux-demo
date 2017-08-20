@@ -1,0 +1,27 @@
+.replies {
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+
+.excellent-item {
+  padding: 8px 15px;
+  font-size: 12px;
+  margin: 0 -15px;
+  border-bottom: 1px solid #f0f0f0;
+  color: #666;
+}
+
+.reply-item {
+  padding: 15px;
+  position: relative;
+}
+
+.avatar {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+
+.infos {
+  padding-left: 75px;
+}

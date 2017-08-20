@@ -169,3 +169,37 @@ export function fetchTopic(topicId) {
       .then(json => dispatch(receiveTopic(json.topic)))
   }
 }
+
+
+export const REQUEST_REPLIES = 'REQUEST_REPLIES';
+export const RECEIVE_REPLIES = 'RECEIVE_REPLIES';
+
+export function requestReplies(topicId) {
+  return {
+    type: REQUEST_REPLIES,
+    topicId
+  }
+}
+
+export function receiveReplies(topicId, replies) {
+  return {
+    type: RECEIVE_REPLIES,
+    items: replies,
+    topicId
+  }
+}
+
+export function fetchReplies(topicId) {
+  const url = `https://ruby-china.org/api/v3/topics/${topicId}/replies`
+  return function(dispatch, getState) {
+    dispatch(requestReplies(topicId));
+    fetch(url)
+      .then( res => {
+        console.log(res)
+        return res.json();
+      })
+      .then( json => {
+        dispatch(receiveReplies(topicId, json.replies))
+      })
+  }
+}

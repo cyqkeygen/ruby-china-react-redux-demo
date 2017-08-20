@@ -108,19 +108,13 @@
   padding: 6px 15px;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
-  border-color: #ddd;
-  border-bottom-color: #eee;
-  border-bottom: 1px solid transparent;
+  border-bottom: 1px solid #eee;
   color: #777;
   font-size: 14px;
 }
 
 .replies-body {
-  margin: 0 -15px;
-  padding: 15px 15px;
-  position: relative;
   border-bottom: 1px solid #eee;
-  padding-left: 74px;
 }
 
 .right-col {

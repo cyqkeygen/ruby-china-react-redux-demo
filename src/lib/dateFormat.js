@@ -1,4 +1,4 @@
-export default function format(dateString) {
+export  function format(dateString) {
   const date = new Date(dateString);
   const timeStamp = date.getTime();
   const now = Date.now();
@@ -15,4 +15,13 @@ export default function format(dateString) {
     const days = Math.floor(duration / 86400);
     return `${days} 天前`;
   }
+}
+
+export function toDate(dateString) {
+  const date = new Date(dateString);
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const hour = date.getHours();
+  const minute = date.getMinutes();
+  return `${month}月${day}日 ${hour}:${minute}`
 }

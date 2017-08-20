@@ -8,7 +8,9 @@ import {
   REQUEST_NODE,
   RECEIVE_NODE,
   REQUEST_TOPIC,
-  RECEIVE_TOPIC
+  RECEIVE_TOPIC,
+  REQUEST_REPLIES,
+  RECEIVE_REPLIES
 } from '../actions';
 
 function uiSwitch(state = {}, action) {
@@ -159,12 +161,36 @@ function currentTopic(state = {
   }
 }
 
+function replies(state = {
+  isFetching: false,
+  items: [],
+}, action) {
+  switch (action.type) {
+    case REQUEST_REPLIES:
+      return {
+        ...state,
+        isFetching: true,
+        topicId: action.topicId
+      }
+    case RECEIVE_REPLIES:
+      return {
+        ...state,
+        isFetching: false,
+        items: action.items,
+        topicId: action.topicId
+      }
+    default:
+      return state;
+  }
+}
+
 const rootReducer = combineReducers({
   uiSwitch,
   topics,
   nodes,
   currentNode,
-  currentTopic
+  currentTopic,
+  replies
 });
 
 export default rootReducer;
