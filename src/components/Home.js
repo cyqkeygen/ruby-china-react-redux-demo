@@ -10,7 +10,7 @@ import styles from '../styles/modules/Home.scss';
 const cards = [
   {url: '/topics', content: 'Ruby 社区'},
   {url: '/wiki', content: '技术文档'},
-  {url: '/jobs', content: '招聘与求职'},
+  {url: '/topics/jobs', content: '招聘与求职'},
   {url: '/topics/popular', content: '精华文章'},
 ];
 
@@ -57,7 +57,9 @@ class Home extends React.Component {
             </div>
             <div className={styles['banner-inner-right']}>
               <div className={styles.firstLine}>
-                (React Redux)模仿Ruby China, 尊重原版！！
+                (React Redux)模仿
+                <a href='https://ruby-china.org/'> Ruby China</a>
+                , 尊重原版！！
                 <a href='https://github.com/cyqkeygen/ruby-china-react-redux-demo'>github</a>
               </div>
               <div className={styles.firstLine}>Ruby China 官方 RubyGems 镜像、Ruby 镜像 正式上线！</div>

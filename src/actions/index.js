@@ -54,8 +54,9 @@ const getUrl = (match, options) => {
   const { offset, limit } = options;
   const defaultUrl = requestTopicsUrl + `?limit=${limit}&offset=${offset}`;
 
-  if (path === '/topics/node:id') {
-    const { id }= params;
+  if (path === '/topics/node:id' || path === '/topics/jobs') {
+    let { id }= params;
+    if (path.endsWith('jobs')) id = 25;
     return defaultUrl + `&node_id=${id}`;
   }
 
@@ -195,7 +196,6 @@ export function fetchReplies(topicId) {
     dispatch(requestReplies(topicId));
     fetch(url)
       .then( res => {
-        console.log(res)
         return res.json();
       })
       .then( json => {

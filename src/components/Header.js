@@ -6,7 +6,7 @@ import styles from '../styles/modules/Header.scss';
 const headerLinks = [
   {path: '/', name: 'Ruby China'},
   {path: '/topics', name: '社区'},
-  {path: '/jobs', name: '招聘'},
+  {path: '/topics/jobs', name: '招聘'},
   {path: '/wiki', name: 'Wiki'},
   {path: '/sites', name: '酷站'},
   {path: '/gems', name: 'Gems'}
@@ -37,6 +37,7 @@ class Header extends React.Component {
         : <NavLink className={styles.link}
                    activeClassName={styles.active}
                    to={path}
+                   exact
                    key={key}>
             {name}
           </NavLink>

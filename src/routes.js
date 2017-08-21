@@ -12,9 +12,9 @@ const routes = [
   { path: '/topics/popular', strict: true, name: '', component: Topics},
   { path: '/topics/no_reply', strict: true, name: '', component: Topics},
   { path: '/topics/last', strict: true, name: '', component: Topics},
+  { path: '/topics/jobs', strict: true,  name: '招聘', component: Topics},
   { path: '/topics/node:id', strict: true, name: '', component: Topics},
   { path: '/topics/:id', strict: true, name: '', component: Topic},
-  { path: '/jobs', name: '招聘', component: Topics},
   { path: '/wiki', name: 'Wiki', component: Wiki},
   { path: '/sites', name: '酷站', component: Sites},
 ];
