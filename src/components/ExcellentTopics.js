@@ -23,7 +23,8 @@ class ExcellentTopics extends React.Component {
 
   render(){
     const { items, isFetching } = this.props;
-    const length = items.length;
+    const leftCol = items.filter((item, i) => { if (i % 2 === 1) return true});
+    const rightCol = items.filter((item, i) => { if (i % 2 === 0) return true});
     if (isFetching) {
       return (
         <div>
@@ -35,10 +36,10 @@ class ExcellentTopics extends React.Component {
         <div className={styles.box}>
           <div className={styles.panel}>社区精华贴</div>
           <div className={styles.col}>
-            {items.slice(0, length / 2).map( item => <TopicItem key={item.id} topic={item} />)}
+            {leftCol.map( item => <TopicItem key={item.id} topic={item} />)}
           </div>
           <div className={styles.col}>
-            {items.slice(length / 2).map( item => <TopicItem key={item.id} topic={item} />)}
+            {rightCol.map( item => <TopicItem key={item.id} topic={item} />)}
           </div>
           <div className={styles.banner}>
             <Link to='/items/popular'>
