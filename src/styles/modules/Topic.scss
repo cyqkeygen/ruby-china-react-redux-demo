@@ -187,4 +187,13 @@
   color: #222527;
 }
 
+@media (max-width: 991px) {
+  .left-col {
+    display: block;
+    width: 100%;
+  }
 
+  .right-col {
+    display: none;
+  }
+}
