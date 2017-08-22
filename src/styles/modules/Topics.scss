@@ -144,3 +144,11 @@
 .friend {
   padding: 0;
 }
+
+@media (max-width: 991px) {
+  .left-col,
+  .right-col {
+    display: block;
+    width: 100%;
+  }
+}
