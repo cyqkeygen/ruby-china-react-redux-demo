@@ -21,6 +21,12 @@
   background: #fff;
 }
 
+@media (max-width: 767px) {
+  .banner {
+    display: none;
+  }
+}
+
 .banner-inner {
   width: 480px;
   margin: auto;
@@ -37,10 +43,17 @@
   display: table-cell;
 }
 
-.card-box {
+.home-icons {
   margin-top: 15px;
   margin-left: -15px;
   margin-right: -15px;
+}
+
+
+@media (max-width: 991px) {
+  .home-icons {
+    display: none;
+  }
 }
 
 .card-wrapper {

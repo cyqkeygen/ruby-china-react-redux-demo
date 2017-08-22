@@ -31,7 +31,7 @@ class Home extends React.Component {
 
   renderLinks() {
     return (
-      <div className={styles['card-box']}>
+      <div className={styles['home-icons']}>
         {cards.map((card, i) => 
           <div key={i} className={styles['card-wrapper']}>
             <div className={styles.card}>
