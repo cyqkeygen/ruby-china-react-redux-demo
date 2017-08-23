@@ -49,7 +49,7 @@ class App extends React.Component {
     const supportsHistory = 'pushState' in window.history;
 
     return (
-      <Router basename="/hello/"
+      <Router basename="/"
               forceRefresh={!supportsHistory}>
         <div>
           <Header />
